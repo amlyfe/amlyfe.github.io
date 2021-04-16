@@ -60,7 +60,7 @@
   												<img src="images/new - credit card churn importance.png" style="width:100%">
 											</figure>
                                                                                         <!-- Table -->
-													<h3><i>Table 1: </i></h3>
+													<!-- <h3><i>Table 1: </i></h3> -->
 
 													<!-- <h4>Default</h4> -->
 													<div class="table-wrapper">
@@ -115,11 +115,49 @@
 											<!-- Break -->
 											<div class="col-4 col-12-medium">
 												<h3>Results</h3>
-												<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit.</p>
+												<p>The eXtreme Gradient Boosting classification model performed better than the other models. Therefore, I concatenated the training and validation data and performed a cross-validation randomized grid search to choose the best parameters. The fine-tuned eXtreme Gradient Boosting model was fit on the test data and produced the results seen in <i>Table 2</i>. The classification results can be observed in the confusion matrix, <i>Figure 2</i>. Of the 1520 records in the test data, 209 customers were correctly classified and 9 were incorrectly classified as closing their account. Furthermore, 34 customers were incorrectly classified as existing cardholders but have closed their account. However, approximately 86% of customers at risk of churn were identified. The credit card company can extend retention offers to these cardholders; however, the additional 14% represents missed opportunity. The Area Under the Precision-Recall Curve can be seen in <i>Figure 3</i>.</p>
 											</div>
+									                <!-- Table -->
+													<!-- <h3><i>Table 1: </i></h3> -->
+
+													<!-- <h4>Default</h4> -->
+													<div class="table-wrapper">
+														<table>
+															<caption><i>Table 2 - Evaluation metric values after parameter tuning</i></caption>
+															<thead>
+																<tr>
+																	<th>Classification Model</th>
+																	<th>AUC Precision-Recall</th>
+																	<th>Log Loss</th>
+                                                                                                                                        <th>Accuracy</th>
+															<tbody>
+																<tr>
+																	<td>eXtreme Gradient Boosting</td>
+																	<td>0.847</td>
+																	<td>0.98</td>
+																	<td>0.972</td>
+																</tr>
+															</tbody>
+															<tfoot>
+																<!--<tr>
+																	<td colspan="2"></td>
+																	<td>100.00</td>
+																</tr> -->
+															</tfoot>
+														</table>
+													</div>
+											<figure>
+												<figcaption><i>Figure 2 - Confusion matrix of classification results</i></figcaption>
+  												<img src="images/credit card churn - figure 2.png" style="width:100%">
+											</figure>
+											<figure>
+												<figcaption><i>Figure 3 - Area under the precision-recall curve</i></figcaption>
+  												<img src="images/credit card churn - figure 3.png" style="width:100%">
+											</figure>
+														
 											<div class="col-4 col-12-medium">
 												<h3>Conclusion</h3>
-												<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit.</p>
+												<p>Once cardholders that have been identified as Attrited Customers, the company must decide how they will proceed with extending retention offers. It may choose one or multiple approaches to compare the effectiveness of each. Based on the responses of each cardholder, further analysis through uplift modeling can be conducted to determine which customers are most likely to respond to the retention offer. </p>
 											</div>
 											<div class="col-4 col-12-medium">
 												<h3>Accumsan montes viverra</h3>
@@ -127,15 +165,15 @@
 											</div>
 										</div>
 
-									<hr class="major" />
+									<!-- <hr class="major" /> -->
 
 									<!-- Elements -->
-										<h2 id="elements">Elements</h2>
+										<!--<h2 id="elements">Elements</h2>
 										<div class="row gtr-200">
 											<div class="col-6 col-12-medium">
 
 												<!-- Text stuff -->
-													<h3>Text</h3>
+													<!-- <h3>Text</h3>
 													<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
 													This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
 													This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>.
@@ -148,7 +186,7 @@
 													<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
 
 												<!-- Lists -->
-													<h3>Lists</h3>
+													<!-- <h3>Lists</h3>
 													<div class="row">
 														<div class="col-6 col-12-small">
 
@@ -261,7 +299,7 @@
 													<blockquote>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Lorem ipsum dolor. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus.</blockquote>
 
 												<!-- Table -->
-													<h3>Table</h3>
+													<!-- <h3>Table</h3>
 
 													<h4>Default</h4>
 													<div class="table-wrapper">
@@ -359,7 +397,7 @@
 											<div class="col-6 col-12-medium">
 
 												<!-- Buttons -->
-													<h3>Buttons</h3>
+													<!-- <h3>Buttons</h3>
 													<ul class="actions">
 														<li><a href="#" class="button primary">Primary</a></li>
 														<li><a href="#" class="button">Default</a></li>
@@ -392,7 +430,7 @@
 													</ul>
 
 												<!-- Form -->
-													<h3>Form</h3>
+													<!-- <h3>Form</h3>
 
 													<form method="post" action="#">
 														<div class="row gtr-uniform">
@@ -403,7 +441,7 @@
 																<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
 															</div>
 															<!-- Break -->
-															<div class="col-12">
+															<!-- <div class="col-12">
 																<select name="demo-category" id="demo-category">
 																	<option value="">- Category -</option>
 																	<option value="1">Manufacturing</option>
@@ -413,7 +451,7 @@
 																</select>
 															</div>
 															<!-- Break -->
-															<div class="col-4 col-12-small">
+															<!-- <div class="col-4 col-12-small">
 																<input type="radio" id="demo-priority-low" name="demo-priority" checked>
 																<label for="demo-priority-low">Low</label>
 															</div>
@@ -426,7 +464,7 @@
 																<label for="demo-priority-high">High</label>
 															</div>
 															<!-- Break -->
-															<div class="col-6 col-12-small">
+															<!-- <div class="col-6 col-12-small">
 																<input type="checkbox" id="demo-copy" name="demo-copy">
 																<label for="demo-copy">Email me a copy</label>
 															</div>
@@ -435,11 +473,11 @@
 																<label for="demo-human">I am a human</label>
 															</div>
 															<!-- Break -->
-															<div class="col-12">
+															<!-- <div class="col-12">
 																<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
 															</div>
 															<!-- Break -->
-															<div class="col-12">
+															<!-- <div class="col-12">
 																<ul class="actions">
 																	<li><input type="submit" value="Send Message" class="primary" /></li>
 																	<li><input type="reset" value="Reset" /></li>
@@ -449,7 +487,7 @@
 													</form>
 
 												<!-- Image -->
-													<h3>Image</h3>
+													<!-- <h3>Image</h3>
 
 													<h4>Fit</h4>
 													<span class="image fit"><img src="images/pic11.jpg" alt="" /></span>
@@ -459,11 +497,11 @@
 															<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
 															<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
 															<!-- Break -->
-															<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
+															<!-- <div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
 															<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
 															<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
 															<!-- Break -->
-															<div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
+															<!-- <div class="col-4"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
 															<div class="col-4"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
 															<div class="col-4"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
 														</div>
@@ -474,13 +512,13 @@
 													<p><span class="image right"><img src="images/pic02.jpg" alt="" /></span>Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
 
 												<!-- Box -->
-													<h3>Box</h3>
+													<!-- <h3>Box</h3>
 													<div class="box">
 														<p>Felis sagittis eget tempus primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Magna sed etiam ante ipsum primis in faucibus vestibulum.</p>
 													</div>
 
 												<!-- Preformatted Code -->
-													<h3>Preformatted</h3>
+													<!-- <h3>Preformatted</h3>
 													<pre><code>i = 0;
 
 while (!deck.isInOrder()) {
@@ -518,6 +556,16 @@ print 'It took ' + i + ' iterations to sort the deck.';
 									</header>
 									<ul>
 										<li><a href="index.html">Homepage</a></li>
+										<li><a href="https://amlyfe.github.io/aboutamy.html">About Me</a></li>
+                                                                                <li>
+											<span class="opener">Projects</span>
+											<ul>
+												<li><a href="https://amlyfe.github.io/creditcardchurn.html">Credit Card Churn</a></li>
+												<li><a href="#">Health Insurance Cost</a></li>
+												<li><a href="#">Employee Attrition</a></li>
+												<li><a href="#">Stock Price Forecasting</a></li>
+											</ul>
+										</li>
 										<li><a href="generic.html">Generic</a></li>
 										<li><a href="elements.html">Elements</a></li>
 										<li>
