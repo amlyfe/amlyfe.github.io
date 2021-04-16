@@ -56,8 +56,8 @@
 									<p>I obtained the <a href="https://www.kaggle.com/sakshigoyal7/credit-card-customers">Credit Card Customers</a> dataset from Kaggle, which contained over 10,000 credit cardholder records. It contained 20 variables, including the target variable Attrition_Flag – a categorical variable with binary classes, Existing Customer and Attrited Customer. First, I split the data into a training, validation, and test sets. The training set contained 70% of the data and the remaining 30% was split evenly between the validation and test sets. After converting the categorical variables, I used the training data and a decision tree to determine variable importance. The selected the variables that represented 97% importance, as seen in <i>Figure 1</i>. Using these variables, I trained and fit five different classification models on the validation data. To evaluate the models, I used the Area Under the Precision-Recall Curve and Negative Log-Loss. The Area Under the Precision-Recall Curve is stable under class-imbalance. Therefore, if the number of cardholders who cancel their account makes up a small percentage of the dataset, this metric will allow me to focus on the trade-off of precision and recall instead of giving credit for true negative predictions that often overwhelm the set of predictions. This allows for additional requirements to potentially quantify the impact of Type 1 (customers predicted to cancel their card but do not) and Type 2 (customers predicted to keep their card but cancel) errors to set a threshold of prediction. Average precision is a metric with scores between 0 and 1, where higher is better. Negative Log-Loss uses calibrated probabilities to assess how confident and correct the model is on average. It heavily penalizes confident and wrong predictions. Negative Log-Los is a metric of positive numbers, where lower is better. I also noted the accuracy of each model. The results can be seen in <i>Table 1</i>.</p>
 							
 									<figure>
-										<figcaption><i>Figure 1 - Variables with top 97% importance</i></figcaption>
   										<img src="images/new - credit card churn importance.png" style="width:75%">
+										<figcaption><i>Figure 1 - Variables with top 97% importance</i></figcaption>
 									</figure>
 									
 									<br>
@@ -130,21 +130,6 @@
 											</tbody>
 										</table>
 									</div>
-									<!-- This was added -->
-									<div class="row">
-  										<div class="column">
-											<figure>
-												<figcaption><i>Figure 2 - Confusion matrix of classification results</i></figcaption>
-  												<img src="images/credit card churn - figure 2.png" style="width:50%">
-											</figure>
-										</div>
-  										<div class="column">
-											<figure>
-												<figcaption><i>Figure 3 - Area under the precision-recall curve</i></figcaption>
-  												<img src="images/credit card churn - figure 3.png" style="width:70%">
-											</figure>
-										</div>
-									</div>
 										
 									<figure>
 										<figcaption><i>Figure 2 - Confusion matrix of classification results</i></figcaption>
@@ -158,8 +143,8 @@
 										
 									<div class="box alt">
 										<div class="row gtr-50 gtr-uniform">
-											<div class="col-4"><span class="image fit"><img src="images/credit card churn - figure 2.png" alt="" /></span></div>
-											<div class="col-4"><span class="image fit"><img src="images/credit card churn - figure 3.png" alt="" /></span></div>	
+											<div class="col-4"><span class="image fit"><img src="images/credit card churn - figure 2.png" style="width:50%" /></span></div>
+											<div class="col-4"><span class="image fit"><img src="images/credit card churn - figure 3.png" style="width:100%" /></span></div>	
 										</div>
 									</div>
 
