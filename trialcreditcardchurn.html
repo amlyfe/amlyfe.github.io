@@ -1,0 +1,264 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Editorial by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>
+									<ul class="icons">
+										<li><a href="https://twitter.com/itsamylyfe" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<!--<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li> -->
+										<li><a href="https://github.com/afemal" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="https://www.linkedin.com/in/amy-femal-66316419a/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Credit Card Churn</h1>
+									</header>
+									
+									<hr class="major" />
+
+									<h2>Introduction</h2>
+									<p>Credit card companies generate most of their revenue through fees charged to their cardholders. These fees may include interest charged to balances carried over from the previous month, late fees if the minimum payment amount is not paid by the due date, an annual fee to keep the account open, cash advance fees charged when cards are used to obtain cash, balance transfer fees charged when the balance of one card is transferred to another, etc. In 2019, U.S. credit card companies made approximately $180 billion through customer fees alone (Egan, 2020).</p>
+
+									<hr class="major" />
+
+									<h2>Business Problem</h2>
+									<p>Customer attrition, or customer churn, can be defined as the rate at which customers stop doing business with a company. Customer churn is an important metric to consider since it is generally more expensive to acquire new customers than to retain existing customers. By determining which factors contribute to customer churn, the company can identify individual cardholders who are likely to cancel their credit card. In turn, the company can extend a retention offer to these customers to encourage them to retain their card.</p>
+									
+									<hr class="major" />
+
+									<h2>Methods</h2>
+									<p>I obtained the <a href="https://www.kaggle.com/sakshigoyal7/credit-card-customers">Credit Card Customers</a> dataset from Kaggle, which contained over 10,000 credit cardholder records. It contained 20 variables, including the target variable Attrition_Flag – a categorical variable with binary classes, Existing Customer and Attrited Customer. First, I split the data into a training, validation, and test sets. The training set contained 70% of the data and the remaining 30% was split evenly between the validation and test sets. After converting the categorical variables, I used the training data and a decision tree to determine variable importance. The selected the variables that represented 97% importance, as seen in <i>Figure 1</i>. Using these variables, I trained and fit five different classification models on the validation data. To evaluate the models, I used the Area Under the Precision-Recall Curve and Negative Log-Loss. The Area Under the Precision-Recall Curve is stable under class-imbalance. Therefore, if the number of cardholders who cancel their account makes up a small percentage of the dataset, this metric will allow me to focus on the trade-off of precision and recall instead of giving credit for true negative predictions that often overwhelm the set of predictions. This allows for additional requirements to potentially quantify the impact of Type 1 (customers predicted to cancel their card but do not) and Type 2 (customers predicted to keep their card but cancel) errors to set a threshold of prediction. Average precision is a metric with scores between 0 and 1, where higher is better. Negative Log-Loss uses calibrated probabilities to assess how confident and correct the model is on average. It heavily penalizes confident and wrong predictions. Negative Log-Los is a metric of positive numbers, where lower is better. I also noted the accuracy of each model. The results can be seen in <i>Table 1</i>.</p>
+							
+									<figure>
+										<figcaption><i>Figure 1 - Variables with top 97% importance</i></figcaption>
+  										<img src="images/new - credit card churn importance.png" style="width:100%">
+									</figure>
+
+									<div class="table-wrapper">
+										<table>
+											<caption><i>Table 1 - Evaluation metric values for each classification model</i></caption>
+											<thead>
+												<tr>
+													<th>Classification Model</th>
+													<th>AUC Precision-Recall</th>
+													<th>Log Loss</th>
+                                                                                                	<th>Accuracy</th>
+											<tbody>
+												<tr>
+													<td>Naive Bayes</td>
+													<td>0.551</td>
+													<td>3.16</td>
+													<td>0.908</td>
+												</tr>
+												<tr>
+													<td>Decision Tree</td>
+													<td>0.672</td>
+													<td>2.23</td>
+													<td>0.935</td>
+												</tr>
+												<tr>
+													<td>Random Forest</td>
+													<td>0.789</td>
+													<td>1.36</td>
+													<td>0.961</td>
+												</tr>
+												<tr>
+													<td>Gradient Boosting</td>
+													<td>0.823</td>
+													<td>1.14</td>
+													<td>0.967</td>
+												</tr>
+												<tr>
+													<td>eXtreme Gradient Boosting</td>
+													<td>0.840</td>
+													<td>1.02</td>
+													<td>0.970</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<hr class="major" />
+
+									<h2>Results</h2>
+									<p>The eXtreme Gradient Boosting classification model performed better than the other models. Therefore, I concatenated the training and validation data and performed a cross-validation randomized grid search to choose the best parameters. The fine-tuned eXtreme Gradient Boosting model was fit on the test data and produced the results seen in <i>Table 2</i>. The classification results can be observed in the confusion matrix, <i>Figure 2</i>. Of the 1520 records in the test data, 209 customers were correctly classified and 9 were incorrectly classified as closing their account. Furthermore, 34 customers were incorrectly classified as existing cardholders but have closed their account. However, approximately 86% of customers at risk of churn were identified. The credit card company can extend retention offers to these cardholders; however, the additional 14% represents missed opportunity. The Area Under the Precision-Recall Curve can be seen in <i>Figure 3</i>.</p>
+									
+									<div class="table-wrapper">
+										<table>
+											<caption><i>Table 1 - Evaluation metric values for each classification model</i></caption>
+											<thead>
+												<tr>
+													<th>Classification Model</th>
+													<th>AUC Precision-Recall</th>
+													<th>Log Loss</th>
+                                                                                                	<th>Accuracy</th>
+											<tbody>
+												<tr>
+													<td>eXtreme Gradient Boosting</td>
+													<td>0.847</td>
+													<td>0.98</td>
+													<td>0.972</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<figure>
+										<figcaption><i>Figure 2 - Confusion matrix of classification results</i></figcaption>
+  										<img src="images/credit card churn - figure 2.png" style="width:100%">
+									</figure>
+									<br>
+									<figure>
+										<figcaption><i>Figure 3 - Area under the precision-recall curve</i></figcaption>
+  										<img src="images/credit card churn - figure 3.png" style="width:100%">
+									</figure>
+
+									<hr class="major" />
+
+									<h2>Conclusion</h2>
+									<p>Once cardholders that have been identified as Attrited Customers, the company must decide how they will proceed with extending retention offers. It may choose one or multiple approaches to compare the effectiveness of each. Based on the responses of each cardholder, further analysis through uplift modeling can be conducted to determine which customers are most likely to respond to the retention offer.</p>
+									
+									<hr class="major" />
+
+									<h2>Presentation</h2>
+									<p>
+									
+									<hr class="major" />
+
+									<h2>References</h2>
+									<p>	
+
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li><a href="generic.html">Generic</a></li>
+										<li><a href="elements.html">Elements</a></li>
+										<li>
+											<span class="opener">Submenu</span>
+											<ul>
+												<li><a href="#">Lorem Dolor</a></li>
+												<li><a href="#">Ipsum Adipiscing</a></li>
+												<li><a href="#">Tempus Magna</a></li>
+												<li><a href="#">Feugiat Veroeros</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Etiam Dolore</a></li>
+										<li><a href="#">Adipiscing</a></li>
+										<li>
+											<span class="opener">Another Submenu</span>
+											<ul>
+												<li><a href="#">Lorem Dolor</a></li>
+												<li><a href="#">Ipsum Adipiscing</a></li>
+												<li><a href="#">Tempus Magna</a></li>
+												<li><a href="#">Feugiat Veroeros</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Maximus Erat</a></li>
+										<li><a href="#">Sapien Mauris</a></li>
+										<li><a href="#">Amet Lacinia</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Ante interdum</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+									</div>
+									<ul class="actions">
+										<li><a href="#" class="button">More</a></li>
+									</ul>
+								</section>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>S<p>I would love to hear from you.</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">amyl.femal@gmail.com</a></li>
+										<li class="icon solid fa-phone">(562) 644-4838</li>
+									        <!-- <li class="icon solid fa-home">1234 Somewhere Road #8254<br />
+										Nashville, TN 00000-0000</li> -->
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
