@@ -56,8 +56,8 @@
 									<p>I obtained the <a href="https://www.kaggle.com/sakshigoyal7/credit-card-customers">Credit Card Customers</a> dataset from Kaggle, which contained over 10,000 credit cardholder records. It contained 20 variables, including the target variable Attrition_Flag – a categorical variable with binary classes, Existing Customer and Attrited Customer. First, I split the data into a training, validation, and test sets. The training set contained 70% of the data and the remaining 30% was split evenly between the validation and test sets. After converting the categorical variables, I used the training data and a decision tree to determine variable importance. The selected the variables that represented 97% importance, as seen in <i>Figure 1</i>. Using these variables, I trained and fit five different classification models on the validation data. To evaluate the models, I used the Area Under the Precision-Recall Curve and Negative Log-Loss. The Area Under the Precision-Recall Curve is stable under class-imbalance. Therefore, if the number of cardholders who cancel their account makes up a small percentage of the dataset, this metric will allow me to focus on the trade-off of precision and recall instead of giving credit for true negative predictions that often overwhelm the set of predictions. This allows for additional requirements to potentially quantify the impact of Type 1 (customers predicted to cancel their card but do not) and Type 2 (customers predicted to keep their card but cancel) errors to set a threshold of prediction. Average precision is a metric with scores between 0 and 1, where higher is better. Negative Log-Loss uses calibrated probabilities to assess how confident and correct the model is on average. It heavily penalizes confident and wrong predictions. Negative Log-Los is a metric of positive numbers, where lower is better. I also noted the accuracy of each model. The results can be seen in <i>Table 1</i>.</p>
 							
 									<figure>
-  										<img src="images/new - credit card churn importance.png" style="width:75%">
 										<figcaption><i>Figure 1 - Variables with top 97% importance</i></figcaption>
+										<img src="images/new - credit card churn importance.png" style="width:75%">
 									</figure>
 									
 									<br>
@@ -114,7 +114,7 @@
 									
 									<div class="table-wrapper">
 										<table style="width:600px">
-											<caption style="text-align:left"><i>Table 1 - Evaluation metric values for each classification model</i></caption>
+											<caption style="text-align:left"><i>Table 2 - Evaluation metric values for each classification model</i></caption>
 											<thead>
 												<tr>
 													<th>Classification Model</th>
@@ -132,12 +132,17 @@
 										</table>
 									</div>
 									
-									
+									<br>
+									<br>
+										
 									<figure>
 										<figcaption><i>Figure 2 - Confusion matrix of classification results</i></figcaption>
   										<img src="images/credit card churn - figure 2.png" style="width:50%">
 									</figure>
+									
 									<br> 
+									<br>
+										
 									<figure>
 										<figcaption><i>Figure 3 - Area under the precision-recall curve</i></figcaption>
   										<img src="images/credit card churn - figure 3.png" style="width:70%">
@@ -181,43 +186,27 @@
 									</header>
 									<ul>
 										<li><a href="index.html">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
-										<li>
-											<span class="opener">Submenu</span>
+										<li><a href="https://amlyfe.github.io/aboutamy.html">About Me</a></li>
+                                                                                <li>
+											<span class="opener">Projects</span>
 											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Etiam Dolore</a></li>
-										<li><a href="#">Adipiscing</a></li>
-										<li>
-											<span class="opener">Another Submenu</span>
-											<ul>
-												<li><a href="#">Lorem Dolor</a></li>
-												<li><a href="#">Ipsum Adipiscing</a></li>
-												<li><a href="#">Tempus Magna</a></li>
-												<li><a href="#">Feugiat Veroeros</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Maximus Erat</a></li>
-										<li><a href="#">Sapien Mauris</a></li>
-										<li><a href="#">Amet Lacinia</a></li>
+												<li><a href="https://amlyfe.github.io/creditcardchurn.html">Credit Card Churn</a></li>
+												<li><a href="#">Health Insurance Cost</a></li>
+												<li><a href="#">Employee Attrition</a></li>
+												<li><a href="#">Stock Price Forecasting</a></li>
+											</ul>	
 									</ul>
 								</nav>
 
 							<!-- Section -->
 								<section>
 									<header class="major">
-										<h2>Ante interdum</h2>
+										<h2>Presentations</h2>
 									</header>
 									<div class="mini-posts">
 										<article>
-											<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+											<a href="https://youtu.be/cV5D9zP-ze0" class="image"><img src="images/image.jpg" alt="" /></a>
+											<p>Credit Card Churn</p>
 										</article>
 										<article>
 											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
@@ -231,7 +220,7 @@
 									<ul class="actions">
 										<li><a href="#" class="button">More</a></li>
 									</ul>
-								</section>
+								</section> -->
 
 							<!-- Section -->
 								<section>
