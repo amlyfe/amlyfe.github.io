@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Editorial by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Data Science</strong> by Amy Femal</a>
+									<ul class="icons">
+										<li><a href="https://twitter.com/itsamylyfe" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<!--<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li> -->
+										<li><a href="https://github.com/afemal" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="https://www.linkedin.com/in/amy-femal-66316419a/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Health Insurance Cost</h1>
+									</header>
+									
+									<!-- <hr class="major" /> -->
+
+									<h2>Introduction</h2>
+									<p>Health insurance is a type of insurance that helps pay for medical expenses. It works by pooling resources and spreading the financial risk associated with major medical expenses across the entire population to protect those who require medical attention. Whether purchased privately or funded by the government, medical insurance is essential to provide protection against increasing medical costs. The Affordable Care Act of 2010 was designed to extend health insurance to those who could not afford it; however, costs continue to grow.</p>
+
+									<hr class="major" />
+
+									<h2>Business Problem</h2>
+									<p>With the cost of healthcare in the country today, the need for health insurance is stressed and overemphasized. An individual essentially needs health insurance to maximize their savings on healthcare. One of the biggest issues plaguing health insurance is its high cost, which cannot be directly calculated by individuals beforehand. There are many factors that drive the increasing costs of health insurance, some of which are directly related to the personal attributes of the policy holder. Our project is aimed to determine which personal attributes contribute most toward health insurance costs and use regression models to predict the cost based on these attributes.</p>
+									
+									<hr class="major" 
+
+									<h2>Methods</h2>
+								  <p>We obtained <a href="https://www.kaggle.com/mirichoi0218/insurance">Medical Cost Personal Dataset</a> from Kaggle that contained 1338 records of insured individuals, each providing information about the following variables:</p>
+									<dl>
+									  <dt>age</dt>
+										<dd>
+										  <p>the age of the policy holder, ranging from 18 to 64 with the mean age of 39</p>
+										</dd>
+										<dt>sex</dt>
+										<dd>
+											<p>a binary variable indicating whether the policy holder is male (M) or female (F), contains 676 males and 662 females</p>
+										</dd>
+										<dt>BMI</dt>
+										<dd>
+											<p>the body mass index of the policy holder, ranging from 15.96 to 53.13 with a mean BMI of 30.66</p>
+										</dd>
+                    <dt>children</dt>
+										<dd>
+											<p>the number of children insured through the insurance policy, ranging from 0 to 5, with a mean of 1</p>
+										</dd>
+                    <dt>smoker</dt>
+										<dd>
+											<p>a binary variable indicating whether the policy holder smokes (yes) or not (no), contains 274 that smoke and 1064 that do not smoke</p>
+										</dd>
+                    <dt>region</dt>
+										<dd>
+											<p>indicates where the policy holder resides: 324 from the northeast, 325 from the northwest, 364 from the southeast, and 325 from the southwest</p>
+										</dd>
+                    <dt>charges</dt>
+										<dd>
+											 <p>the cost of health insurance in dollars, ranging from $1121.87 to $63770.43 with a mean of $13270.42</p>
+										</dd>
+									</dl>	
+                  <p>We converted the binary variables, sex and smoker, into binary labels, where female=0 and male=1 and no=0 and yes=1. We also converted the regions into encoded labels, where northeast=0, northwest=1, southeast=2, and southwest=3. We transformed the BMI variable from a continuous variable into encoded labels by binning the values into the following categories, as provided by the CDC:</p>
+                  <ul>
+                    <li>underweight = 0 , when BMI < 18.5</li>
+                    <li>normal = 1, when 18.5 ≤ BMI < 25</li>
+                    <li>overweight = 2, when 25 ≤ BMI < 30</li>
+                    <li>obese = 3, when BMI ≥ 30</li>
+                  </ul> 
+                  <p>The data contained records with 20 underweight BMIs, 225 normal BMIs, 386 overweight BMIs, and 707 obese BMIs. Finally, many insurance companies only charge for a maximum of three children, requiring no additional fee if more than three children are on the policy. As a result, we combined observations with 4 and 5 children with those of 3. The children variable can be thought of as a categorical variable, where children=3 represents "3 or more" children. The final breakdown of value counts was: 574 with 0 children, 324 with 1 child, 240 with 2 children, and 200 with 3 or more children. After preparing our data, we created histograms of our numerical variables, as seen in <i>Figure 1</i>, and bar plots of our categorical variables, as seen in <i>Figure 2</i>.</p>
+							
+									<figure>
+										<figcaption><i>Figure 1 - Histograms of numerical variables</i></figcaption>
+										<img src="images/health insurance figure 1.png" style="width:75%; height=auto">
+									</figure>
+									
+									<br>
+									<br>
+                  
+                  <figure>
+										<figcaption><i>Figure 2 - Bar plots of categorical variables</i></figcaption>
+										<img src="images/health insurance figure 2.png" style="width:75%; height=auto">
+									</figure>
+              
+                  <p>We also created scatterplots of the variables against charges, as seen in <i>Figure 3</i>. Based on the scatterplots, we observed there were three distinct groups of charges by age, with each group having slightly increasing charges as age increased. Charges appeared to be greater for policy holders that smoke and have increased BMIs. The charges by gender, number of children, and region appeared to be consistent.</p>              
+
+                  <figure>
+										<figcaption><i>Figure 3 - Scatterplots of all feature variables against the target variable charges</i></figcaption>
+										<img src="images/health insurance figure 3.png" style="width:75%; height=auto">
+									</figure>
+              
+                  <p>We created modified scatterplots by removed these three variables and included the smoker variable as a third variable, as seen in <i>Figure 4</i>. Based on these scatterplots, we observed that those who smoke are generally charged more, regardless of their age. We also observed that those who both smoke and have higher BMIs are charged more. We looked at BMI as it originally appeared in the dataset, as a continuous variable, and noticed a linear relationship between BMI and charges for smokers, as seen in <i>Figure 5</i>.</p>
+              
+                  <figure>
+										<figcaption><i>Figure 4 - Modified 3-D scatterplots</i></figcaption>
+										<img src="images/health insurance figure 4.png" style="width:75%; height=auto">
+									</figure>
+                
+                  <br>
+                  <br>
+              
+                  <figure>
+										<figcaption><i>Figure 5 - Scatterplot with BMI as a continuous variable</i></figcaption>
+										<img src="images/health insurance figure 5.png" style="width:75%; height=auto">
+									</figure>
+              
+                  <p>Looking at the data, it appeared the most significant variables contributing to health insurance charges were age, BMI, and whether the policy holder smoked or not. However, we used a decision tree regression model to determine feature importance. First, we split our data into training, validation, and test sets, with the training set containing 50% of the data and the remaining 50% split evenly between the validation and test sets. Next, we trained the decision tree regression model on our training data, with BMI in categorical form. The results were as follows:</p>  
+              
+									<div class="table-wrapper">
+										<table style="width:600px">
+											<thead>
+												<tr>
+													<th>Variable</th>
+													<th>smoker</th>
+													<th>BMI</th>
+                          <th>age</th>
+                          <th>children</th>
+                          <th>region</th>
+                          <th>sex</th>
+                          
+											<tbody>
+												<tr>
+													<td>Significance</td>
+													<td>62.3%</td>
+													<td>16.5%</td>
+													<td>15.3%</td>
+                          <th>2.9%</th>
+                          <th>1.6%</th>
+                          <th>1.4%</th>
+												</tr>
+											
+											</tbody>
+										</table>
+									</div>
+
+                  <p>We repeated the process but with BMI as a continuous variable as it originally appeared in the data. The results were as follows:</p>
+                  
+                  <div class="table-wrapper">
+										<table style="width:600px">
+											<thead>
+												<tr>
+													<th>Variable</th>
+													<th>smoker</th>
+													<th>BMI</th>
+                          <th>age</th>
+                          <th>children</th>
+                          <th>region</th>
+                          <th>sex</th>
+                          
+											<tbody>
+												<tr>
+													<td>Significance</td>
+													<td>61.9%</td>
+													<td>20.9%</td>
+													<td>13.8%</td>
+                          <th>1.6%</th>
+                          <th>1.1%</th>
+                          <th>0.8%</th>
+												</tr>
+											
+											</tbody>
+										</table>
+									</div>  
+                    
+                  <p>BMI as a continuous variable has more significance than as a categorical variable. It also lessens the significance of region, children, and sex. Therefore, we selected smoker, BMI as a continuous variable, and age as the variables to use in our regression models.</p><p>Using the selected variables – smoker, BMI, and age – we trained and fit linear regression, decision tree, and random forest models to the validation data. We decided to use the R-squared and mean absolute error metrics to evaluate the performance of our models. R-squared is a statistical measure that represents the proportion of the variance for a dependent variable that is explained by an independent variable or variables in a regression model. Whereas correlation explains the strength of the relationship between an independent and dependent variable, R-squared explains to what extent the variance of one variable explains the variance of the second variable. The mean absolute error (MAE) measures the average magnitude of the errors in a set of forecasts, without considering their direction. It measures accuracy for continuous variables. Using these metrics to evaluate the models, we obtained the following results:</p>
+                  
+                  <div class="table-wrapper">
+										<table style="width:600px">
+											<thead>
+												<tr>
+													<th>Model</th>
+													<th>R-squared</th>
+													<th>MAE</th>
+                          
+											<tbody>
+												<tr>
+													<td>Linear Regression</td>
+													<td>0.708</td>
+													<td>4163.34</td>
+												</tr>
+                        
+                        <tr>
+													<td>Decision Tree</td>
+													<td>0.683</td>
+													<td>3239.07</td>
+												</tr>
+                        
+                        <tr>
+													<td>Random Forest</td>
+													<td>0.780</td>
+													<td>2833.14</td>
+												</tr>
+											
+											</tbody>
+										</table>
+									</div>    
+                   
+                  <p>The random forest regression model performed better than the other two models. Next, we concatenated our training and validation data and performed a cross-validation grid search to choose the hyper-parameters for our random forest regression model. Using the grid search to find the values that resulted in the best mean absolute error score, the following parameters were selected:</p>
+                  
+                  <ul>
+                    <li>criterion = 'mae'</li>
+                    <li>max_depth = 4</li>
+                    <li>max_features = None</li>
+                    <li>min_samples_leaf = 3</li>
+                    <li>min_samples_split = 4</li>
+                    <li>n_estimators = 200</li>
+                  </ul>   
+									<hr class="major" />
+
+									<h2>Results</h2>
+									<p>Using these parameters, we trained the random forest with the training and validation data and fit it on our test data. We obtained an R-square of 0.86 and MAE of 2022.03. The results using the fine-tuned random forest shows increased performance in both performance metrics. The resulting R-squared value indicates that 86% of our data fit the random forest regression model. The mean absolute error indicts our prediction is off by $2022.03 on average.</p>
+								
+									<hr class="major" /> 
+
+									<h2>Conclusion</h2>
+									<p>Based on the regression models we used, we saw improved prediction when using the fine-tuned random forest model. However, there may be other models that increase prediction performance. Our analysis and predictions were limited to the variables in our dataset. There are many other factors that may contribute to the costs of health insurance, besides the personal attributes of the policy holder. Some of these factors may include, but are not limited to, the following:</p>
+									<ul>
+                    <li>whether a spouse is on the plan</li>
+                    <li>whether the policy holder has secondary health insurance</li>
+                    <li>whether insurance coverage is provided by an employer, Medicare, Medicaid, Affordable Care Act, etc.</li>
+                    <li>which insurance company is providing coverage</li>
+                    <li>the type of insurance plan, such as high or low deductible</li>
+                    <li>whether those insured have chronic diseases or illnesses</li>
+                  </ul> 
+									<hr class="major" />
+									
+									<h4>References</h4>
+									<ul>
+  									<sub><li>Bihari, Michael. (2020, December 8). “What Determines the Cost of a Health Insurance Plan?” Verywell Health. Retrieved February 14, 2021, from <a>https://www.verywellhealth.com/cost-of-health-insurance-1738623</a></li>
+  									<li>Choi, M. (2018, February 21). Medical Cost Personal Datasets. Retrieved December 02, 2020, from <a>https://www.creditcards.com/credit-card-news/how-credit-card-companies-make-money/https://www.kaggle.com/mirichoi0218/insurance</a></li>
+										<li>Defining adult overweight and obesity. (2020, September 17). Retrieved February 14, 2021, from <a>https://www.cdc.gov/obesity/adult/defining.html</a></li>
+										<li>Fernando, Jason. (2020, November 18). “R-Squared.” Investopedia. Retrieved March 02, 2021, from <a>www.investopedia.com/terms/r/r-squared.asp</a></li>
+										<li>How does the size of my family impact my insurance cost? (n.d.). Retrieved February 14, 2021, from <a>https://www.canstar.com.au/credit-cards/colour-credit-card-mean/https://www.bcbsm.com/index/health-insurance-help/faqs/topics/buying-insurance/family-size-impact-cost.html</a></li>
+										<li>How health insurance marketplace® plans set your premiums. (n.d.). Retrieved February 14, 2021, from <a>https://www.healthcare.gov/how-plans-set-your-premiums/</a></li>
+										<li>Understanding health Insurance Costs: Premiums, deductibles & more. (n.d.). Medical Mutual. Retrieved February 14, 2021, from <a>https://www.medmutual.com/For-Individuals-and-Families/Health-Insurance-Education/Health-Insurance-Basics/Understanding-Costs.aspx</a></li>
+									</ul>  
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li><a href="https://amlyfe.github.io/aboutamy.html">About</a></li>
+                                                                                <li>
+											<span class="opener">Projects</span>
+											<ul>
+												<li><a href="https://amlyfe.github.io/creditcardchurn.html">Credit Card Churn</a></li>
+												<li><a href="#">Health Insurance Cost</a></li>
+												<li><a href="#">Employee Attrition</a></li>
+												<li><a href="#">Stock Price Forecasting</a></li>
+											</ul>	
+										<li><a href="https://amlyfe.github.io/aboutamy.html">Contact</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Presentations</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="https://youtu.be/cV5D9zP-ze0" class="image"><img src="images/image.png" alt="" /></a>
+											<p>Credit Card Churn</p>
+										</article>
+										<article>
+											<a href="https://youtu.be/F4EP5Q5jQlY" class="image"><img src="images/health insurance present.png" alt="" /></a>
+											<p>Health Insurance Cost</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+									</div>
+									<ul class="actions">
+										<li><a href="#" class="button">More</a></li>
+									</ul>
+								</section> 
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>I would love to hear from you.</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">amyl.femal@gmail.com</a></li>
+										<li class="icon solid fa-phone">(562) 644-4838</li>
+									        <!-- <li class="icon solid fa-home">1234 Somewhere Road #8254<br />
+										Nashville, TN 00000-0000</li> -->
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; amlyfe. All rights reserved. Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
