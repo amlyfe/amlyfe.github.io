@@ -47,246 +47,249 @@
 									<!-- <hr class="major" /> -->
 
 									<h2>Introduction</h2>
-                                    <p>Breast cancer is the most common type of cancer among women – 1 in 8 women in the United States will be diagnosed at some point in their life. Mammographic images are used to detect abnormal masses in breast tissue. Based on the observed attributes of the mass, a physician may recommend a biopsy to determine a diagnosis. A fine needle aspiration (FNA) biopsy is a common form of the procedure, in which a physician uses a needle attached to a syringe to withdraw tissue or fluid from the mass. Mammographic images and FNA biopsies tend to have diagnosis inaccuracies, yielding false negative rate of 20% and 12%, respectively. False negative, or Type II, diagnosis results are the most damaging as they allow breast cancer to remain undetected and treatment to be delayed. Delays in treatment increase the risk of metastasis, which can reduce life expectancy. I will use the Haberman’s Survival dataset to determine which variables are most significant to the survival of a patient. I will use the Mammographic Imaging and Biopsy datasets to determine which variables are most significant to predict breast cancer with high accuracy and perfect recall, avoiding any false negative predictions. This will ensure breast cancer does not go undetected and increases survival.</p>
+                                    					<p>Breast cancer is the most common type of cancer among women – 1 in 8 women in the United States will be diagnosed at some point in their life. Mammographic images are used to detect abnormal masses in breast tissue. Based on the observed attributes of the mass, a physician may recommend a biopsy to determine a diagnosis. A fine needle aspiration (FNA) biopsy is a common form of the procedure, in which a physician uses a needle attached to a syringe to withdraw tissue or fluid from the mass. Mammographic images and FNA biopsies tend to have diagnosis inaccuracies, yielding false negative rate of 20% and 12%, respectively. False negative, or Type II, diagnosis results are the most damaging as they allow breast cancer to remain undetected and treatment to be delayed. Delays in treatment increase the risk of metastasis, which can reduce life expectancy. I will use the Haberman’s Survival dataset to determine which variables are most significant to the survival of a patient. I will use the Mammographic Imaging and Biopsy datasets to determine which variables are most significant to predict breast cancer with high accuracy and perfect recall, avoiding any false negative predictions. This will ensure breast cancer does not go undetected and increases survival.</p>
              
 									<hr class="major" />
 
 									<h2>Research Questions</h2>
 									<p>Using different datasets, I will answer the following questions:</p>
-                                    <ul>
-                                        <li>What measurements taken during a mammographic image are significant to the diagnosis of breast cancer?</li>
-                                        <li>Using these significant measurements, can I use a machine learning model to predict a diagnosis with high accuracy and high recall?</li>
-                                        <li>What measurements of cell nuclei taken from a fine needle aspiration biopsy are significant to the diagnosis of breast cancer?</li>
-                                        <li>Using these significant measurements, can I use a machine learning model to predict the diagnosis with high accuracy and high recall? Less than 4% false positive and 12% false negative?</li>
-                                        <li?>What characteristics contribute to a patient surviving longer than five years post-surgery?</li>
-                                    </ul>
+                                    					<ul>
+                                      	  					<li>What measurements taken during a mammographic image are significant to the diagnosis of breast cancer?</li>
+                                        					<li>Using these significant measurements, can I use a machine learning model to predict a diagnosis with high accuracy and high recall?</li>
+                                        					<li>What measurements of cell nuclei taken from a fine needle aspiration biopsy are significant to the diagnosis of breast cancer?</li>
+                                        					<li>Using these significant measurements, can I use a machine learning model to predict the diagnosis with high accuracy and high recall? Less than 4% false positive and 12% false negative?</li>
+                                        					<li>What characteristics contribute to a patient surviving longer than five years post-surgery?</li>
+                                    					</ul>
 
-                                    <hr class="major" />
+                                    					<hr class="major" />
                                     
-                                    <h2>Data</h2>
-                                    <p>All datasets were obtained from Kaggle.com and include the following information:</p>
-                                    <ul>
-                                        <li><a href="https://www.kaggle.com/krpiku/haberman.csv?select=haberman.csv">Haberman Cancer Survival Data</a>
-                                        <br>This dataset was collected by the University of Chicago’s Billings Hospital between 1958 and 1970 from patients who had undergone breast cancer surgery. The dataset contains 305 observations with four variables:<br>
-                                        <dl>
-                                            <dt>age</dt>
-                                              <dd>
-                                                <p>age of the patient at the time of surgery</p>
-                                              </dd>
-                                              <dt>year</dt>
-                                              <dd>
-                                                  <p>year the surgery was performed</p>
-                                              </dd>
-                                              <dt>nodes</dt>
-                                              <dd>
-                                                  <p>number of positive axillary lymph nodes</p>
-                                              </dd>
-                                              <dt>status</dt>
-                                              <dd>
-                                                  <p>status of the patient 5 years post-surgery, where 1 = survived and 2 = died</p>
-                                              </dd>
-                                        </dl>
-                                        </li>
-                                        <li><a href="https://www.kaggle.com/overratedgman/mammographic-mass-data-set">Mammographic Mass Data</a>
-                                        <br>This dataset was collected at the Institute of Radiology of the University Erlangen-Nuremberg between 2003 and 2006 from mammographic images. The original dataset was comprised of 961 observations but attributes with missing values were removed. This dataset includes 830 observations and six variables:<br>
-                                        <dl>
-                                            <dt>BI-RADS</dt>
-                                            <dd>
-                                                <p>standard system used to describe findings where:<br>
-                                                <ul>
-                                                    <li>0 = Incomplete (Additional imagining is necessary)</li>
-                                                    <li>1 = Negative (No abnormalities to report)</li>
-                                                    <li>2 = Benign (No cancerous findings)</li> 
-                                                    <li>3 = Probably benign finding</li> 
-                                                    <li>4 = Suspicious abnormality</li>
-                                                    <li>5 = Highly suggestive of malignancy</li>
-                                                    <li>6 = Known biopsy-proven malignancy</li>
-                                                </ul>
-                                                </p>
-                                            </dd>
-                                            <dt>age</dt>
-                                            <dd>
-                                                <p>age of patient</p>
-                                            </dd>
-                                            <dt>shape</dt>
-                                            <dd>
-                                                <p>shape of the mass, where<br>
-                                                <ul>
-                                                    <li>1 = round</li>
-                                                    <li>2 = oval</li>
-                                                    <li>3 = lobular</li>
-                                                    <li>4 = irregular</li>
-                                                </ul></p>
-                                            <dt>margin</dt>
-                                            <dd>
-                                                <p>description of the mass’s edge, where<br>
-                                                <ul>
-                                                    <li>1 = circumscribed</li>
-                                                    <li>2 = microlobulate</li>
-                                                    <li>3 = obscured</li>
-                                                    <li>4 = ill-defined</li>
-                                                    <li>5 = spiculated</li>
-                                                </ul> </p>
-                                            </dd>
-                                            <dt>density</dt>
-                                            <dd>
-                                                <p>density of the mass, where<br>
-                                                <ul>
-                                                    <li>1 = high</li>
-                                                    <li>2 = isodense</li>
-                                                    <li>3 = low</li>
-                                                    <li>4 = fat-contained</li>
-                                                </ul></p>
-                                            </dd>
-                                            <dt>severity</dt>
-                                            <dd>
-                                                <p>diagnosis of the mass, where 0 = benign and 1 = malignant</p>
-                                            </dd>
-                                        </dl>
-                                    </li>
-                                    <li><a href="https://www.kaggle.com/merishnasuwal/breast-cancer-prediction-dataset">Breast Cancer Prediction Dataset</a>
-                                    <br>This data was collected by Dr. William H. Wolberg, W. Nick Street, Olvi L. Mangasarian in the General Surgery and Computer Science Departments as the University of Wisconsin in 1992 from fine needle aspiration biopsies. The original dataset is comprised of 569 observations with 32 variables. This dataset contains all 569 observations but has been reduced to the following six variables:<br>
-                                    <dl>
-                                        <dt>radius</dt>
-                                        <dd>
-                                            <p>mean of distances from the center of the cell nuclei to the points on its perimeter</p>
-                                        </dd>
-                                        <dt>texture</dt>
-                                        <dd>
-                                            <p>mean texture of the nuclei, described by the spatial arrangement and variation of grey values observed</p>
-                                        </dd>
-                                        <dt>perimeter</dt>
-                                        <dd>
-                                            <p>mean distance around the nuclei</p>
-                                        </dd>
-                                        <dt>area</dt>
-                                        <dd>
-                                            <p>mean area of the nuclei</p>
-                                        </dd>
-                                        <dt>smoothness</dt>
-                                        <dd>
-                                            <p>mean of the local variation in radius lengths</p>
-                                        </dd>
-                                        <dt>diagnosis</dt>
-                                        <dd>
-                                            <p>diagnosis of the mass, where 0 = malignant and 1 = benign</p>
-                                        </dd>
-                                    </dl>
-                                    </li>
-                                    </ul>
+                                    					<h2>Data</h2>
+                                    					<p>All datasets were obtained from Kaggle.com and include the following information:</p>
+                                    					<ul>
+                                        					<li><a href="https://www.kaggle.com/krpiku/haberman.csv?select=haberman.csv">Haberman Cancer Survival Data</a>
+                                        					<br>This dataset was collected by the University of Chicago’s Billings Hospital between 1958 and 1970 from patients who had undergone breast cancer surgery. The dataset contains 305 observations with four variables:<br>
+                                        					<dl>
+                                            						<dt>age</dt>
+                                              						<dd>
+                                                						<p>age of the patient at the time of surgery</p>
+                                              						</dd>
+                                              						<dt>year</dt>
+                                              						<dd>
+                                                  						<p>year the surgery was performed</p>
+                                              						</dd>
+                                              						<dt>nodes</dt>
+                                              						<dd>
+                                                  						<p>number of positive axillary lymph nodes</p>
+                                              						</dd>
+                                              						<dt>status</dt>
+                                              						<dd>
+                                                  						<p>status of the patient 5 years post-surgery, where 1 = survived and 2 = died</p>
+                                              						</dd>
+                                        					</dl>
+                                        					</li>
+                                        					<li><a href="https://www.kaggle.com/overratedgman/mammographic-mass-data-set">Mammographic Mass Data</a>
+                                        					<br>This dataset was collected at the Institute of Radiology of the University Erlangen-Nuremberg between 2003 and 2006 from mammographic images. The original dataset was comprised of 961 observations but attributes with missing values were removed. This dataset includes 830 observations and six variables:<br>
+                                        					<dl>
+                                            						<dt>BI-RADS</dt>
+                                            						<dd>
+                                                						<p>standard system used to describe findings where:<br>
+                                                						<ul>
+                                                    							<li>0 = Incomplete (Additional imagining is necessary)</li>
+                                                    							<li>1 = Negative (No abnormalities to report)</li>
+                                                    							<li>2 = Benign (No cancerous findings)</li> 
+                                                   							<li>3 = Probably benign finding</li> 
+                                                    							<li>4 = Suspicious abnormality</li>
+                                                    							<li>5 = Highly suggestive of malignancy</li>
+                                                    							<li>6 = Known biopsy-proven malignancy</li>
+                                                						</ul>
+                                                						</p>
+                                            						</dd>
+                                            						<dt>age</dt>
+                                            						<dd>
+                                                						<p>age of patient</p>
+                                            						</dd>
+                                            						<dt>shape</dt>
+                                            						<dd>
+                                                						<p>shape of the mass, where<br>
+                                                						<ul>
+                                                    							<li>1 = round</li>
+                                                    							<li>2 = oval</li>
+                                                    							<li>3 = lobular</li>
+                                                    							<li>4 = irregular</li>
+                                                						</ul>
+												</p>
+                                            						<dt>margin</dt>
+                                            						<dd>
+                                                						<p>description of the mass’s edge, where<br>
+                                                						<ul>
+                                                    							<li>1 = circumscribed</li>
+                                                    							<li>2 = microlobulate</li>
+                                                    							<li>3 = obscured</li>
+                                                    							<li>4 = ill-defined</li>
+                                                    							<li>5 = spiculated</li>
+                                                						</ul> 
+												</p>
+                                            						</dd>
+                                            						<dt>density</dt>
+                                            						<dd>
+                                                						<p>density of the mass, where<br>
+                                                						<ul>
+                                                    							<li>1 = high</li>
+                                                    							<li>2 = isodense</li>
+                                                    							<li>3 = low</li>
+                                                    							<li>4 = fat-contained</li>
+                                                						</ul>
+												</p>
+                                            						</dd>
+                                            						<dt>severity</dt>
+                                            						<dd>
+                                                						<p>diagnosis of the mass, where 0 = benign and 1 = malignant</p>
+                                            						</dd>
+                                        					</dl>
+                                    						</li>
+                                    						<li><a href="https://www.kaggle.com/merishnasuwal/breast-cancer-prediction-dataset">Breast Cancer Prediction Dataset</a>
+                                    						<br>This data was collected by Dr. William H. Wolberg, W. Nick Street, Olvi L. Mangasarian in the General Surgery and Computer Science Departments as the University of Wisconsin in 1992 from fine needle aspiration biopsies. The original dataset is comprised of 569 observations with 32 variables. This dataset contains all 569 observations but has been reduced to the following six variables:<br>
+                                    						<dl>
+                                        						<dt>radius</dt>
+                                        						<dd>
+                                            							<p>mean of distances from the center of the cell nuclei to the points on its perimeter</p>
+                                        						</dd>
+                                        						<dt>texture</dt>
+                                        						<dd>
+                                            							<p>mean texture of the nuclei, described by the spatial arrangement and variation of grey values observed</p>
+                                        						</dd>
+                                        						<dt>perimeter</dt>
+                                        						<dd>
+                                            							<p>mean distance around the nuclei</p>
+                                        						</dd>
+                                        						<dt>area</dt>
+                                        						<dd>
+                                            							<p>mean area of the nuclei</p>
+                                        						</dd>
+                                        						<dt>smoothness</dt>
+                                        						<dd>
+                                            							<p>mean of the local variation in radius lengths</p>
+                                        						</dd>
+                                        						<dt>diagnosis</dt>
+                                        						<dd>
+                                            							<p>diagnosis of the mass, where 0 = malignant and 1 = benign</p>
+                                        						</dd>
+                                    						</dl>
+                                    						</li>
+                                    					</ul>
 
-                                    <hr class="major" />
+                                    					<hr class="major" />
                                     
-                                    <h2>Approach</h2>
-                                    <p>For each dataset, I performed exploratory data analysis. I examined the variables to find which are the most significant in predicting breast cancer and the survival of a patient. I used different classification models to identify which provides the best accuracy and recall in predicting a diagnosis.</p>
-                                    <p><b>How My Approach Addresses the Problem</b></p>
-                                    <p>Type II errors, or false negatives, allow breast cancer to remain undetected and treatment to be delayed. Delays in treatment increase the risk of metastasis, or the spread of cancer to other parts of the body, which can reduce life expectancy. I used the survival data to determine which variables contribute most to the survival of a patient. I used the data from mammographic images and fine needle aspiration biopsies to determine how to predict breast cancer with high accuracy and perfect recall to ensure breast cancer does not go undetected and increase the chance of survival.</p>
+                                    					<h2>Approach</h2>
+                                    					<p>For each dataset, I performed exploratory data analysis. I examined the variables to find which are the most significant in predicting breast cancer and the survival of a patient. I used different classification models to identify which provides the best accuracy and recall in predicting a diagnosis.</p>
+                                    					<p><b>How My Approach Addresses the Problem</b></p>
+                                    					<p>Type II errors, or false negatives, allow breast cancer to remain undetected and treatment to be delayed. Delays in treatment increase the risk of metastasis, or the spread of cancer to other parts of the body, which can reduce life expectancy. I used the survival data to determine which variables contribute most to the survival of a patient. I used the data from mammographic images and fine needle aspiration biopsies to determine how to predict breast cancer with high accuracy and perfect recall to ensure breast cancer does not go undetected and increase the chance of survival.</p>
 									
-                                    <hr class="major" />
+                                    					<hr class="major" />
 
 									<h2>Data Exploration</h2>
 									<p>First, I imported each dataset and looked at the structure and data summary for each. In doing so, I verified no missing data. The summary of the mammographic mass dataset showed an observation that had a value of 55 for BI.RADS. As BI.RADS is an ordinal, categorical variable, I have removed this observations from the dataset. No other outliers were evident in the datasets. I converted categorical variables, indicating ordinal variables where appropriate. The summaries of the clean datasets can be seen in <i>Figure 1</i> and the variable distributions can be seen in <i>Figures 2 - 4</i>. The variables in the biop and hab datasets have skewed-right distributions.</p>
 									
-                                    <figure>
-                                        <figcaption><i>Figure 1 - Data summaries</i></figcaption>
-                                        <img src="images/breast cancer summary.png" style="width:70%; height=auto">
-                                    </figure>
+                                    					<figure>
+                                        					<figcaption><i>Figure 1 - Data summaries</i></figcaption>
+                                        					<img src="images/breast cancer summary.png" style="width:70%; height=auto">
+                                    					</figure>
 
-                                    <br>
-                                    <br>
+                                    					<br>
+                                    					<br>
 
-                                    <figure>
-                                        <figcaption><i>Figure 2 - Mammographic variable distribution</i></figcaption>
-                                        <img src="images/mam distro.png" style="width:70%; height=auto">
-                                    </figure>
+                                    					<figure>
+                                        					<figcaption><i>Figure 2 - Mammographic variable distribution</i></figcaption>
+                                       	 					<img src="images/mam distro.png" style="width:70%; height=auto">
+                                    					</figure>
 
-                                    <br>
-                                    <br>
-                                    <figure>
-                                        <figcaption><i>Figure 3 - Biopsy variable distribution</i></figcaption>
-                                        <img src="images/biop distro.png" style="width:70%; height=auto">
-                                    </figure>
+                                    					<br>
+                                    					<br>
+                                    					<figure>
+                                        					<figcaption><i>Figure 3 - Biopsy variable distribution</i></figcaption>
+                                        					<img src="images/biop distro.png" style="width:70%; height=auto">
+                                    					</figure>
 
-                                    <br>
-                                    <br>
-                                    <figure>
-                                        <figcaption><i>Figure 4 - Haberman variable distribution</i></figcaption>
-                                        <img src="images/hab distro.png" style="width:70%; height=auto">
-                                    </figure>
+                                    					<br>
+                                    					<br>
+                                    					<figure>
+                                        					<figcaption><i>Figure 4 - Haberman variable distribution</i></figcaption>
+                                        					<img src="images/hab distro.png" style="width:70%; height=auto">
+                                    					</figure>
 
-                                    <br>
-                                    <br>
+                                   					<br>
+                                    					<br>
 									<!-- <hr class="major" /> -->
 
-                                    <h2>Haberman’s Survival</h2>
-                                    <p>First, I determined which variables were significant in determining the survival status. I compared the variables between the two groups, died and survived, and use density and boxplots for visual aids.</p>
+                                    					<h2>Haberman’s Survival</h2>
+                                    					<p>First, I determined which variables were significant in determining the survival status. I compared the variables between the two groups, died and survived, and use density and boxplots for visual aids.</p>
 
-                                    <figure>
-                                        <figcaption><i>Density and boxplots of survival by age</i></figcaption>
-                                        <img src="images/hab 1.png" style="width:70%; height=auto">
-                                    </figure>
+                                    					<figure>
+                                       				 		<figcaption><i>Density and boxplots of survival by age</i></figcaption>
+                                        					<img src="images/hab 1.png" style="width:70%; height=auto">
+                                    					</figure>
 
-                                    <br>
-                                    <br>
-                                    <figure>
-                                        <figcaption><i>Density and boxplots of survival by year</i></figcaption>
-                                        <img src="images/hab 2.png" style="width:70%; height=auto">
-                                    </figure>
+                                    					<br>
+                                    					<br>
+                                    					<figure>
+                                        					<figcaption><i>Density and boxplots of survival by year</i></figcaption>
+                                        					<img src="images/hab 2.png" style="width:70%; height=auto">
+                                    					</figure>
 
-                                    <br>
-                                    <br>
-                                    <figure>
-                                        <figcaption><i>Density and boxplots of survival by nodes</i></figcaption>
-                                        <img src="images/hab 3.png" style="width:70%; height=auto">
-                                    </figure>
-                                    <br>
-                                    <br>
+                                    					<br>
+                                    					<br>
+                                    					<figure>
+                                        					<figcaption><i>Density and boxplots of survival by nodes</i></figcaption>
+                                        					<img src="images/hab 3.png" style="width:70%; height=auto">
+                                    					</figure>
+                                    					<br>
+                                    					<br>
 
-                                    <p>Based on the density and boxplots, it appeared the only significant variable is nodes. As the variables are skewed-right, I used the Mann-Whitney U Test to verify this claim.</p>
+                                    					<p>Based on the density and boxplots, it appeared the only significant variable is nodes. As the variables are skewed-right, I used the Mann-Whitney U Test to verify this claim.</p>
 
-                                    <figure>
-                                        <figcaption><i>Results from Mann-Whitney U Test</i></figcaption>
-                                        <img src="images/hab 4.png" style="width:70%; height=auto">
-                                    </figure>
-                                    <br>
-                                    <br>
-                                    <p>The results showed that there is a significant difference in nodes between the two groups. They also indicated that there is no difference in age and year. Therefore, I concluded nodes is the only significant factor in the dataset in determining whether a patient will survive longer than five years after breast cancer surgery.</p>
+                                    					<figure>
+                                        					<figcaption><i>Results from Mann-Whitney U Test</i></figcaption>
+                                        					<img src="images/hab 4.png" style="width:70%; height=auto">
+                                    					</figure>
+                                    					<br>
+                                    					<br>
+                                    					<p>The results showed that there is a significant difference in nodes between the two groups. They also indicated that there is no difference in age and year. Therefore, I concluded nodes is the only significant factor in the dataset in determining whether a patient will survive longer than five years after breast cancer surgery.</p>
 
-                                    <!-- <hr class="major" /> -->
+                                    					<hr class="major" /> 
 
 									<h2>Mammographic Imaging</h2>
-                                    <p>To determine which variables are significant in determining the diagnosis of breast cancer, I compared the variables between the two groups, malignant and benign, and use density and boxplots for visual aids.</p>
+                                    					<p>To determine which variables are significant in determining the diagnosis of breast cancer, I compared the variables between the two groups, malignant and benign, and use density and boxplots for visual aids.</p>
                   
-                                    <figure>
-                                        <figcaption><i>Density and boxplots of variables</i></figcaption>
-                                        <img src="images/mam 1.png" style="width:70%; height=auto">
-                                    </figure>  
-                                    <br>  
-                                    <br>
-                                    <p>It appeared that all variables, except Density, are significant variables in predicting Severity. To decide which variables to use in the logistic model, I used all variables in the dataset to determine the most significant. The full model summary indicated age, shape, and margin are the most significant.</p>
-                                    <figure>
-                                        <figcaption><i>Summary of full logistic regression model</i></figcaption>
-                                        <img src="images/mam 2.png" style="width:70%; height=auto">
-                                    </figure>  
-                                    <br>  
-                                    <br>
-                                    <p>I used these variables in a new logistic regression model. The AIC is much lower, which indicates this model is a better fit than the full model.</p>
-                                    <figure>
-                                        <figcaption><i>Summary of logistic regression model using significant variables</i></figcaption>
-                                        <img src="images/mam 3.png" style="width:70%; height=auto">
-                                    </figure>  
-                                    <br>  
-                                    <br>
-                                    <p>I trained the model using training data and ran the test data through the model. Using a decision threshold of 50%, the model provided a prediction accuracy of 80% and a recall of 79%. To eliminate Type II Errors, I decided to decrease the decision threshold to a value that produced 100% recall. Using a decision threshold of 6%, the model provided a prediction accuracy of 58.2% but 100% recall. The full decision tree model indicated BI.RADS, age, shape, and margin are the most significant variables, as seen below.</p>
-                                    <figure>
-                                        <figcaption><i>Decision tree showing significant variables</i></figcaption>
-                                        <img src="images/mam 4.png" style="width:70%; height=auto">
-                                    </figure>  
-                                    <br>  
-                                    <br>
-                                    <p>Using the training and testing data, the decision tree model provided a prediction accuracy of 83.6% and a recall of 79.8%. The k-nearest neighbors model, when k = 29, provided a prediction accuracy of 80% and a recall of 85%. Using cross validation on a random forest model, BI.RADS was indicated as the only significant variable. The random forest model provided a prediction accuracy of 81.8% and a recall of 84.7%. The decision tree model provided the most prediction accuracy; however, the best model is the logistic regression model with decision threshold of 6% with 100% recall, as seen in <i>Table 1</i>.</p>
+                                    					<figure>
+                                        					<figcaption><i>Density and boxplots of variables</i></figcaption>
+                                        					<img src="images/mam 1.png" style="width:70%; height=auto">
+                                    					</figure>  
+                                    					<br>  
+                                    					<br>
+                                    					<p>It appeared that all variables, except Density, are significant variables in predicting Severity. To decide which variables to use in the logistic model, I used all variables in the dataset to determine the most significant. The full model summary indicated age, shape, and margin are the most significant.</p>
+                                    					<figure>
+                                        					<figcaption><i>Summary of full logistic regression model</i></figcaption>
+                                        					<img src="images/mam 2.png" style="width:70%; height=auto">
+                                    					</figure>  
+                                    					<br>  
+                                    					<br>
+                                    					<p>I used these variables in a new logistic regression model. The AIC is much lower, which indicates this model is a better fit than the full model.</p>
+                                    					<figure>
+                                        					<figcaption><i>Summary of logistic regression model using significant variables</i></figcaption>
+                                        					<img src="images/mam 3.png" style="width:70%; height=auto">
+                                    					</figure>  
+                                    					<br>  
+                                    					<br>
+                                    					<p>I trained the model using training data and ran the test data through the model. Using a decision threshold of 50%, the model provided a prediction accuracy of 80% and a recall of 79%. To eliminate Type II Errors, I decided to decrease the decision threshold to a value that produced 100% recall. Using a decision threshold of 6%, the model provided a prediction accuracy of 58.2% but 100% recall. The full decision tree model indicated BI.RADS, age, shape, and margin are the most significant variables, as seen below.</p>
+                                    					<figure>
+                                        					<figcaption><i>Decision tree showing significant variables</i></figcaption>
+                                        					<img src="images/mam 4.png" style="width:70%; height=auto">
+                                    					</figure>  
+                                    					<br>  
+                                    					<br>
+                                    					<p>Using the training and testing data, the decision tree model provided a prediction accuracy of 83.6% and a recall of 79.8%. The k-nearest neighbors model, when k = 29, provided a prediction accuracy of 80% and a recall of 85%. Using cross validation on a random forest model, BI.RADS was indicated as the only significant variable. The random forest model provided a prediction accuracy of 81.8% and a recall of 84.7%. The decision tree model provided the most prediction accuracy; however, the best model is the logistic regression model with decision threshold of 6% with 100% recall, as seen in <i>Table 1</i>.</p>
 
-                                    <div class="table-wrapper">
+                                    					<div class="table-wrapper">
 										<table style="width:600px">
 											<caption style="text-align:left"><i>Table 1 - Evaluation metric values for each classification model</i></caption>
 											<thead>
@@ -324,61 +327,61 @@
 										</table>
 									</div>
                                     
-                                    <br>
-                                    <br>
+                                    					<br>
+                                    					<br>
 
-                                    <h2>Fine Needle Aspiration Biopsy</h2>
-                                    <p>To decide how to proceed with the radius, perimeter, and area variables, I used scatterplots to examine the relationship between them.</p>
+                                    					<h2>Fine Needle Aspiration Biopsy</h2>
+                                    					<p>To decide how to proceed with the radius, perimeter, and area variables, I used scatterplots to examine the relationship between them.</p>
 
-                                    <figure>
-                                        <figcaption><i>Scatterplots of radius, perimeter, and area</i></figcaption>
-                                        <img src="images/biop 1.png" style="width:70%; height=auto">
-                                    </figure>  
-                                    <br>  
-                                    <br>
-                                    <p>The variables are highly correlated, as suspected. To help decide which two variables to remove from the data frame, I examined their correlation coefficients.</p>
-                                    <figure>
-                                        <img src="images/biop 2.png" style="width:70%; height=auto">
-                                    </figure>  
-                                    <br>  
-                                    <br>
-                                    <p>The greatest correlation was between the product of the radius and perimeter variables and the area variable. Therefore, I removed the radius and perimeter variables. Next, I examined the correlation between the remaining variables.</p>
-                                    <figure>
-                                        <img src="images/biop 3.png" style="width:70%; height=auto">
-                                    </figure>  
-                                    <br>  
-                                    <br>
-                                    <p>None of the remaining variables were highly correlated with the others. Next, I compared the variables between the two diagnosis groups, malignant and benign. I used density and boxplots for visual aids.</p>
-                                    <figure>
-                                        <figcaption><i>Density and boxplots of diagnosis by texture</i></figcaption>
-                                        <img src="images/biop 4.png" style="width:70%; height=auto">
-                                    </figure>  
-                                    <br>  
-                                    <br>
+                                    					<figure>
+                                        					<figcaption><i>Scatterplots of radius, perimeter, and area</i></figcaption>
+                                        					<img src="images/biop 1.png" style="width:70%; height=auto">
+                                    					</figure>  
+                                    					<br>  
+                                    					<br>
+                                    					<p>The variables are highly correlated, as suspected. To help decide which two variables to remove from the data frame, I examined their correlation coefficients.</p>
+                                    					<figure>
+                                        					<img src="images/biop 2.png" style="width:50%; height=auto">
+                                    					</figure>  
+                                    					<br>  
+                                    					<br>
+                                    					<p>The greatest correlation was between the product of the radius and perimeter variables and the area variable. Therefore, I removed the radius and perimeter variables. Next, I examined the correlation between the remaining variables.</p>
+                                    					<figure>
+                                        					<img src="images/biop 3.png" style="width:50%; height=auto">
+                                    					</figure>  
+                                    					<br>  
+                                    					<br>
+                                    					<p>None of the remaining variables were highly correlated with the others. Next, I compared the variables between the two diagnosis groups, malignant and benign. I used density and boxplots for visual aids.</p>
+                                    					<figure>
+                                        					<figcaption><i>Density and boxplots of diagnosis by texture</i></figcaption>
+                                        					<img src="images/biop 4.png" style="width:70%; height=auto">
+                                    					</figure>  
+                                    					<br>  
+                                   					<br>
 
-                                    <figure>
+                                    					<figure>
 										<figcaption><i>Density and boxplots of diagnosis by area</i></figcaption>
   										<img src="images/biop 5.png" style="width:70%; height=auto">
-									</figure>
-									<br> 
-									<br>
+				    					</figure>
+				  			 		<br> 
+				   					<br>
 
-                                    <figure>
+                                   					<figure>
 										<figcaption><i>Density and boxplots of diagnosis by smoothness</i></figcaption>
   										<img src="images/biop 6.png" style="width:70%; height=auto">
-									</figure>
-									<br> 
-									<br>
-                                    <p>Based on the density and boxplots, it appeared there was a significant difference in texture, area, and smoothness between the two diagnosis groups. I used the Mann-Whitney U Test to show verify.</p>
-                                    <figure>
+				   					</figure>
+				 	 				<br> 
+				  					<br>
+                                  					<p>Based on the density and boxplots, it appeared there was a significant difference in texture, area, and smoothness between the two diagnosis groups. I used the Mann-Whitney U Test to show verify.</p>
+                                  					<figure>
 										<figcaption><i>Results from Mann-Whitney U Test</i></figcaption>
   										<img src="images/biop 7.png" style="width:70%; height=auto">
-									</figure>
-									<br> 
+				  					</figure>
+				  					<br> 
 									<br>
-                                    <p>The Mann-Whitney U Test verified these claims. Therefore, I used these variables in a logistic regression model. I trained the model using training data and ran the test data through the models. Using a 50% decision threshold, the logistic regression model provided a prediction accuracy of 92% and a recall of 86.7%. To eliminate Type II Errors, I decreased the decision threshold to 26%. This provides a prediction accuracy of 94.7% and 100% recall. The decision tree model provides a prediction accuracy of 90.3% and a recall of 83%. The k-nearest neighbors model, when k = 23, provides a prediction accuracy of 86.7% and a recall of 71.4%. The random forest model provides a prediction accuracy of 92.9% and a recall of 90.5%. The logistic regression model with a 26% decision threshold provides the best prediction accuracy with perfect recall. <i>Table 2</i> provides a summary of these results.</p>
+                                    					<p>The Mann-Whitney U Test verified these claims. Therefore, I used these variables in a logistic regression model. I trained the model using training data and ran the test data through the models. Using a 50% decision threshold, the logistic regression model provided a prediction accuracy of 92% and a recall of 86.7%. To eliminate Type II Errors, I decreased the decision threshold to 26%. This provides a prediction accuracy of 94.7% and 100% recall. The decision tree model provides a prediction accuracy of 90.3% and a recall of 83%. The k-nearest neighbors model, when k = 23, provides a prediction accuracy of 86.7% and a recall of 71.4%. The random forest model provides a prediction accuracy of 92.9% and a recall of 90.5%. The logistic regression model with a 26% decision threshold provides the best prediction accuracy with perfect recall. <i>Table 2</i> provides a summary of these results.</p>
 
-                                    <div class="table-wrapper">
+                                    					<div class="table-wrapper">
 										<table style="width:600px">
 											<caption style="text-align:left"><i>Table 2 - Evaluation metric values for each classification model</i></caption>
 											<thead>
@@ -416,24 +419,24 @@
 										</table>
 									</div>
                                     
-                                    <p>The only variable found to be significant in predicting the survival of a patient was the number of positive axillary lymph nodes. Axillary lymph nodes are taken from the axilla, or the armpit. When cancer cells are detected in the axillary lymph nodes, it indicates metastasis. As observed in the analysis, smaller amounts of positive lymph node increased the probability of surviving for longer than five years after surgery. These finding emphasizes the importance of recall accuracy, early detection, and timely treatment. The best recall results were obtained by decreasing the decision threshold in the logistic regression models. There may similar methods available to use on the other classification models; however, time limitations did not allow for further methods to be explored. The survival analysis conducted were based on data gathered from patients who had surgery between 1958 to 1970. Using current data would likely produce different results. I used this data to find the classification models that predicted a diagnosis with high accuracy and recall. As breast cancer continues to affect so many, I feel further research into risk factors associated with its development would provide some interesting insights. These insights could decrease false negative results and increase survival.</p>
+                                    					<p>The only variable found to be significant in predicting the survival of a patient was the number of positive axillary lymph nodes. Axillary lymph nodes are taken from the axilla, or the armpit. When cancer cells are detected in the axillary lymph nodes, it indicates metastasis. As observed in the analysis, smaller amounts of positive lymph node increased the probability of surviving for longer than five years after surgery. These finding emphasizes the importance of recall accuracy, early detection, and timely treatment. The best recall results were obtained by decreasing the decision threshold in the logistic regression models. There may similar methods available to use on the other classification models; however, time limitations did not allow for further methods to be explored. The survival analysis conducted were based on data gathered from patients who had surgery between 1958 to 1970. Using current data would likely produce different results. I used this data to find the classification models that predicted a diagnosis with high accuracy and recall. As breast cancer continues to affect so many, I feel further research into risk factors associated with its development would provide some interesting insights. These insights could decrease false negative results and increase survival.</p>
 
-                                    <!-- <hr class="major" /> -->
+                                    					<hr class="major" /> 
 
 									<h2>Conclusion</h2>
-                                    <p>By adjusting the decision threshold, I was able to obtain 100% recall using logistic regression with the mammographic and biopsy datasets – resulting in no false negative diagnosis. The prediction accuracy using the mammography dataset was only 58.2%, which would require biopsies for many women with false positive results. However, the prediction accuracy using the biopsy dataset was 94.7%.</p>
+                                    					<p>By adjusting the decision threshold, I was able to obtain 100% recall using logistic regression with the mammographic and biopsy datasets – resulting in no false negative diagnosis. The prediction accuracy using the mammography dataset was only 58.2%, which would require biopsies for many women with false positive results. However, the prediction accuracy using the biopsy dataset was 94.7%.</p>
 								
-                                    <!-- <hr class="major" /> -->
+                                    					<hr class="major" /> 
 
-                                    <h4>References</h4>
-                                    <ul>
-                                        <li>Bell, D., Weerakkody, Y., et al (2013). Breast imaging-reporting and data system (BI-RADS): Radiology Reference Article. Retrieved July 29, 2020, from <a>https://radiopaedia.org/articles/breast-imaging-reporting-and-data-system-bi-rads?lang=us</a></li>
-                                        <li>Biswas, K. (2019, July 19). Haberman Cancer Survival Data Set. Retrieved July 20, 2020, from<a>https://www.kaggle.com/krpiku/haberman.csv?select=haberman.csv</a></li>
-                                        <li>Limitations of Mammograms: How Often are Mammograms Wrong? (n.d.). Retrieved August 06, 2020, from<a>https://www.cancer.org/cancer/breast-cancer/screening-tests-and-early-detection/mammograms/limitations-of-mammograms.html</a></li>
-                                        <li>Ovsen. (2016, October 31). Mammographic Mass Data Set. Retrieved July 20, 2020, from<a>https://www.kaggle.com/overratedgman/mammographic-mass-data-set</a></li>
-                                        <li>Singh Suwal, M. (2018, September 26) Breast Cancer Prediction Dataset. Retrieved July 20, 2020 from<a>https://www.kaggle.com/merishnasuwal/breast-cancer-prediction-dataset</a></li>
-                                    </ul>
-                                </section>
+                                    					<h4>References</h4>
+                                    					<ul>
+                                        					<li>Bell, D., Weerakkody, Y., et al (2013). Breast imaging-reporting and data system (BI-RADS): Radiology Reference Article. Retrieved July 29, 2020, from <a>https://radiopaedia.org/articles/breast-imaging-reporting-and-data-system-bi-rads?lang=us</a></li>
+                                        					<li>Biswas, K. (2019, July 19). Haberman Cancer Survival Data Set. Retrieved July 20, 2020, from<a>https://www.kaggle.com/krpiku/haberman.csv?select=haberman.csv</a></li>
+                                        					<li>Limitations of Mammograms: How Often are Mammograms Wrong? (n.d.). Retrieved August 06, 2020, from<a>https://www.cancer.org/cancer/breast-cancer/screening-tests-and-early-detection/mammograms/limitations-of-mammograms.html</a></li>
+                                        					<li>Ovsen. (2016, October 31). Mammographic Mass Data Set. Retrieved July 20, 2020, from<a>https://www.kaggle.com/overratedgman/mammographic-mass-data-set</a></li>
+                                        					<li>Singh Suwal, M. (2018, September 26) Breast Cancer Prediction Dataset. Retrieved July 20, 2020 from<a>https://www.kaggle.com/merishnasuwal/breast-cancer-prediction-dataset</a></li>
+                                    					</ul>
+                                				</section>
 
 						</div>
 					</div>
