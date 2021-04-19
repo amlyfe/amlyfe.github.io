@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Employee Attrition</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Data Science</strong> by Amy Femal</a>
+									<ul class="icons">
+										<li><a href="https://twitter.com/itsamylyfe" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<!--<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li> -->
+										<li><a href="https://github.com/afemal" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="https://www.linkedin.com/in/amy-femal-66316419a/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<ul class="actions">
+											<li><a href="https://github.com/afemal/Employee_Attrition/blob/main/Employee_Attrition.ipynb" class="button big">VIEW MY CODE</a></li>
+										</ul>
+										<h1>Employee Attrition</h1>
+									</header>
+									
+								
+									<!-- <hr class="major" /> -->
+
+									<h2>Introduction</h2>
+									<p>Employee attrition is the natural process in which employees leave the workforce. This can include retirement and voluntary, or involuntary, separations from a company. Whether an employee chooses to leave a company on their own accord, high attrition rates can be harmful to a company and can lead to the following:</p>
+                  <ul>
+                    <li>Incurred costs as a result of recruitment, hiring, and training of new employees</li>
+                    <li>Decreased product or service quality</li>
+                    <li>Decreased employee performance or morale</li>
+                    <li>Delays in current projects or failure to meet deadlines</li>
+                  </ul>
+                  <p>The XYZ Company employs over 4000 employees, with an annual attrition rate of approximately 16%. It is in the company’s best interest to retain their current employees. Thus, the XYZ Company is interested in understanding the factors that affect employee attrition to determine which employees are at risk. This will allow the company to reduce the attrition rate by implementing different techniques and incentives, such as additional training, wage increases, and opportunities for promotion.</p>
+									<hr class="major" />
+
+									<h2>Project Proposal</h2>
+									<p>The <a href=""https://www.kaggle.com/vjchoudhary7/hr-analytics-case-study?select=general_data.csv">HR Analytics Case Study</a> dataset contains records of the 4410 XYZ Company employees. I will be creating two classification models to understand if the dataset has the ability to accurately classify whether an employee will stay or leave the company. This is a supervised learning problem with binary classification, where labels “yes” and “no” indicate whether an employee has left the company or not, respectively. I will be using the recall score to evaluate the performance of the two models. Recall is an important metric to consider, as I would like to minimize Type 2 errors. These errors indicate false negative predictions, which cause employees who are at risk of leaving to go undetected. This metric has a score between 0 and 1, where higher is better.</p>
+									
+									<hr class="major" />
+
+									<h2>Methods</h2>
+									<p>First, I split the dataset into training and testing sets. Using the training set, I converted all categorical features into dummy variables using one hot encoding. I also converted the target into binary variables, where “no”=0 and “yes”=1. Then, I performed feature selection using two different techniques, recursive feature elimination using cross-validation (RFECV) and ANOVA F-values, to determine which factors impact employee attrition the most. I performed RFECV using both a Random Forest Classifier and a Decision Tree Classifier as the estimators, and recall as the scoring metric. The Random Forest Classifier estimator selected two features, age and monthly income. The Decision Tree Classifier estimator selected four features: age, distance from home, monthly income, and years at company. Next, I used the ANOVA F-values to remove irrelevant features. I wanted to select the k features with the highest F-values. To do this, I used a loop to include values of k ranging from 2 to the total number of features. Then, I trained Random Forest Classifiers and Decision Tree Classifiers for each value of k to determine which value provided the best recall score. For both models, k values greater than 9 began to increase only minimally. Therefore, I chose to keep the k=9 best features. These features were: age, number of companies worked, training times last year, years at company, frequent business travel, rare business travel, job role of Research Director, marital status of married, and marital status of single.</p>
+							    <p>Next, I performed model selection. I trained Random Forest and Decision Tree Classifiers with different parameters on the three feature subsets obtained during feature selection. Both models performed best when using the subset with the features: age, distance from home, monthly income, and years at company; however, the Decision Tree Classifier performed the best with a recall score of 0.88 when using the following parameters: criterion=gini, max_depth=19, min_samples_leaf=1, min_samples_split=2, and splitter=random.</p>
+									
+									<!-- <hr class="major" /> -->
+
+									<h2>Results</h2>
+                  <p>I used the Decision Tree Classifier to predict whether or not an employee left the company based on age, distance from home, monthly income, and years at company using the testing data. The model made classification predictions as seen in confusion matrix in <i>Figure 1</i>, providing a recall score of 0.87. This is very close to the recall score obtained during my experiments. Therefore, I am confident that this model will perform similarly on future employee data. I also wanted to look at the Area Under the Precision-Recall Curve, in which a high area indicates both high recall and high precision. I was interested in this metric because it is stable under class-imbalanced and shows the trade-off between precision and recall. The model provided an average precision score of 0.85, which can be seen in the Area Under the Precision-Recall Curve in <i>Figure 2</i>. This value further shows that the model performed well.</p>
+                  
+                  <figure>
+										<figcaption><i>Figure 1 - Confusion matrix of classification results</i></figcaption>
+  										<img src="images/employee attrition figure 1.png" style="width:30%; height=auto">
+									</figure>  
+                  
+                  <br>  
+                  <br>
+                    
+                  <figure>
+										<figcaption><i>Figure 2 - Area under the precision-recall curve</i></figcaption>
+  										<img src="images/employee attrition figure 2.png" style="width:30%; height=auto">
+									</figure>
+									
+									<br> 
+									<br>
+								
+									<h2>Conclusion</h2>
+                    <p>Though the results show that the model performed well, there is room for improvement. I handled class-imbalance by looking at the area under the precision-recall curve. However, I could have performed other techniques, such as random oversampling or Synthetic Minority Oversampling Technique (SMOTE) to generate new data for the minority class. I could also consider using different models. Though decision trees frequently perform well on imbalanced data, tree ensembles usually outperform singular decision trees. Though the Decision Tree Classifier performed better than the Random Forest Classifier, I could test other models, such as Gradient Boosted Trees or Extremely Randomized Trees.</p>
+
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<!--<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section> -->
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li><a href="https://amlyfe.github.io/aboutamy.html">About</a></li>
+                                                                                <li>
+											<span class="opener">Projects</span>
+											<ul>
+												<li><a href="https://amlyfe.github.io/creditcardchurn.html">Credit Card Churn</a></li>
+												<li><a href="https://amlyfe.github.io/healthinsurancecost.html">Health Insurance Cost</a></li>
+												<li><a href="#">Employee Attrition</a></li>
+												<li><a href="#">Stock Price Forecasting</a></li>
+											</ul>	
+										<li><a href="https://amlyfe.github.io/contact.html">Contact</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Presentations</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="https://youtu.be/cV5D9zP-ze0" class="image"><img src="images/image.png" alt="" /></a>
+											<p>Credit Card Churn</p>
+										</article>
+										<article>
+											<a href="https://youtu.be/F4EP5Q5jQlY" class="image"><img src="images/health insurance present.png" alt="" /></a>
+											<p>Health Insurance Cost</p>
+										</article>
+										<article>
+											<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+										</article>
+									</div>
+									<ul class="actions">
+										<li><a href="#" class="button">More</a></li>
+									</ul>
+								</section> 
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>I would love to hear from you.</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#">amyl.femal@gmail.com</a></li>
+										<li class="icon solid fa-phone">(562) 644-4838</li>
+									        <!-- <li class="icon solid fa-home">1234 Somewhere Road #8254<br />
+										Nashville, TN 00000-0000</li> -->
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; amlyfe. All rights reserved. Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
