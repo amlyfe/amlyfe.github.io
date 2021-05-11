@@ -194,35 +194,35 @@
                                 <p>The exponential moving averages over the last five years can be seen in <i>Figure 1</i>. The 20-day moving average follows closer to the actual price, whereas the 100-day moving average provides a better indication of the overall trend. Disney, Comcast, and Netflix show an increasing trend, while Viacom decreases in 2021. </p>
                                 <figure>
 									<figcaption><i>Figure 1 - 20 and 100 day moving averages for each company</i></figcaption>
-  									<img src="images/exponential moving averages.png" style="width:30%; height=auto">
+  									<img src="images/exponential moving averages.png" style="width:70%; height=auto">
 								</figure>
                                 <p>I observed the correlation of the closing prices from the last year between each company. Disney and Comcast were highly correlated, with a correlation coefficient of 0.95. Disney and Viacom are also highly correlated with 0.86, as well as Comcast and Viacom with 0.84. The other relationships can be seen in correlation heatmap in <i>Figure 2</i>. I also looked at the correlation of closing prices over the current year. The relationship between Disney and Comcast remains highly correlated at 0.84, but not as high as the previous year.  The other relationships can be seen in <i>Figure 3</i>.</p>
                                 <figure>
 									<figcaption><i>Figure 2 - Correlation heatmap of closing prices from 2020 to present</i></figcaption>
-  									<img src="images/correlation last year.png" style="width:30%; height=auto">
+  									<img src="images/correlation last year.png" style="width:50%; height=auto">
 								</figure>
                                 <figure>
 									<figcaption><i>Figure 3 - Correlation heatmap of closing prices from the current year</i></figcaption>
-  									<img src="images/correlation current year.png" style="width:30%; height=auto">
+  									<img src="images/correlation current year.png" style="width:50%; height=auto">
 								</figure>
                                 <p>I calculate the dollar volume for each company by multiplying the closing cost by the volume of shares traded each day. <i>Figure 4</i> shows the dollar volume from 2020 to the present. Over the past year, each company has maintained a dollar volume exceeding $20 million dollars, as indicated by the red, dashed line. Therefore, the increased risk associated with thinly traded and low-priced stocks does not apply.</p>
                                 <figure>
 									<figcaption><i>Figure 4 - Dollar volume indicating stocks are not thinly traded or low-priced</i></figcaption>
-  									<img src="images/dollar volume all.png" style="width:30%; height=auto">
+  									<img src="images/dollar volume all.png" style="width:70%; height=auto">
 								</figure>
                                 <p>Next, I looked at the daily returns. I calculated the mean and standard deviation of the daily percent change for 2020 to present day and the current year. The results can be seen in <i>Figure 5</i>. The mean represents the expected return and standard deviation represents the risk. While the risk associated with Disney stock decreased in the current year, so did the expected return. Viacom stock exhibited the opposite with an increase in both the expected return and risk. Comcast stock experienced an increase in expected return and a decrease in risk. The risk of investing in Netflix stock remained unchanged; however, the expected return decreased.</p>
                                 <figure>
 									<figcaption><i>Figure 5 -  Average daily percent change and risk for previous and current year</i></figcaption>
-  									<img src="images/return versus risk.png" style="width:30%; height=auto">
+  									<img src="images/return versus risk.png" style="width:70%; height=auto">
 								</figure>
                                 <p>After splitting the data, I trained the ARIMA and LSTM models. The results of each model can be seen in <i>Figure 6</i> and <i>Figure 7</i>. The ARIMA model outperformed the LSTM model, with lower root mean square errors for all companies. The model performed best on the Comcast stock data, with a RMSE of 0.91.</p>
                                 <figure>
 									<figcaption><i>Figure 6 -  Prediction results of ARIMA model</i></figcaption>
-  									<img src="images/arima results.png" style="width:30%; height=auto">
+  									<img src="images/arima results.png" style="width:70%; height=auto">
 								</figure>
                                 <figure>
 									<figcaption><i>Figure 7 -  Prediction results from LSTM model</i></figcaption>
-  									<img src="images/lstm results.png" style="width:30%; height=auto">
+  									<img src="images/lstm results.png" style="width:70%; height=auto">
 								</figure>
                                 <p>Using the ARIMA model, I forecasted the 12-month price target for each company. These forecasts can be seen in <i>Table 3</i>. I also noted the percent change from the current price to the forecasted price target. </p>
                                 <div class="table-wrapper">
@@ -235,7 +235,7 @@
 												<th>Current Price</th>
 												<th>Price Target</th>
                                                 <th>Percent Change</th>
-                                                <th>Current Year</th>
+                               
 										<tbody>
 											<tr>
 												<td>Disney</td>
