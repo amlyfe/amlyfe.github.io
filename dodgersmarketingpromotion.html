@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Stock Price Forecasting</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Data Science</strong> by Amy Femal</a>
+									<ul class="icons">
+										<li><a href="https://twitter.com/itsamylyfe" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<!--<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li> -->
+										<li><a href="https://github.com/afemal" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="https://www.linkedin.com/in/amy-femal-66316419a/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<ul class="actions">
+											<li><a href="https://github.com/afemal/Dodgers_Marketing_Promotion/blob/main/Stock%20Price%20Forecasting.ipynb" class="button big">VIEW MY CODE</a></li>
+										</ul>
+										<h1>Dodgers Marketing Promotion</h1>
+									</header>
+									
+								
+									<!-- <hr class="major" /> -->
+
+									<h2>Business Problem</h2>
+									<p>I want to determine what night would be best to run a Dodgers marketing promotion to increase attendance.</p>
+
+									<hr class="major" />
+
+									<h2>Methods</h2>
+									<p>I used Dodgers Major League Baseball data that contained the following variables:</p> 
+										temp	skies	day_night	promo
+                                        <dl>
+                                            <dt>month</dt>
+                                              <dd>
+                                                <p>the month the game was played</p>
+                                              </dd>
+                                            <dt>day</dt>
+                                              <dd>
+                                                  <p>the day of the month the game was played </p>
+                                              </dd>
+                                            <dt>attend</dt>
+                                              <dd>
+                                                  <p>the number of spectators in attendance</p>
+                                              </dd>
+                                            <dt>day_of_week</dt>
+                                              <dd>
+                                                  <p>the day of the week the game was played</p>
+                                              </dd>
+                                            <dt>opponent</dt>
+                                              <dd>
+                                                  <p>the opposing team</p>
+                                              </dd>
+                                            <dt>temp</dt>
+                                              <dd>
+                                                  <p>the temperature during the game</p>
+                                              </dd>
+											<dt>skies</dt>
+                                              <dd>
+                                                  <p>indicates whether the skies were clear or cloudy</p>
+                                              </dd>
+											<dt>day_night</dt>
+                                              <dd>
+                                                  <p>indicates whether the game was a day or night game</p>
+                                              </dd>
+											<dt>promo</dt>
+                                              <dd></dd>
+                                                  <p>indicates which promotional item is given away: bobblehead, cap, fireworks, shirt, or none</p>
+                                              </dd>
+											
+                                    </dl>
+                                <p>First, I created boxplots of each categorical variable to see how each compared with the attendance.</p>
+								<figure>
+									<figcaption><i>Figure 1 - Boxplots of categorical variables</i></figcaption>
+  									<img src="images/boxplots.png">
+								</figure>
+								<p>Though there were months with less attended games than September and October, the maximum attendance is general much less than other months. This pattern can also be seen on games played on Monday's. Games that have bobblehead promotions have the most attendance. Next, I looked at scatterplots of the numerical variables.</p>
+								<figure>
+									<figcaption><i>Figure 2 - Scatterplots of numerical variables</i></figcaption>
+  									<img src="images/scatters.png">
+								</figure>
+								<p>There seemed to be a trend with the temperature variable. When the temperture is greater than  80∘, attendance does not reach 43,000.</p>
+								<figure>
+									<figcaption><i>Figure 3 - Boxplot of temperatures by month</i></figcaption>
+  									<img src="images/temp box.png">
+								</figure>
+								<p>The months with the highest temperatures were September and October. Next, I used R to create a linear regression model to predict attendance based on month, day_of_week, and promo. Using the model, I looked at Monday games in September and October. </p>
+								
+								<hr class="major" />
+
+								<h2>Results</h2>
+								<p>There was only one game played on a Monday in September, in which there was no promotional giveaway. Attendance for this game was 33,540. My linear model predicted attendance to be 33,061, which is very close to the actual attendance. I predicted attendance to be approximately 43,761 if we were to run a bobblehead marketing promotion on this day, which is a 30% increase in attendance. Similarly, there was only one game that was played on a Monday in October, with an attendance of 33,624 and no promotion. I predicted an attendance of 44,086 with a bobblehead giveaway, which is a 31% increase.</p>
+									
+								<hr class="major" />
+
+								<h2>Conclusion</h2>
+								<p>Based on my analysis, I would recommend running bobblehead marketing promotions on Monday games in September and October to increase attendance.</p>
+								<hr class="major" />
+									 
+							</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<!--<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section> -->
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li><a href="https://amlyfe.github.io/aboutamy.html">About</a></li>
+                                                                                <li>
+											<span class="opener">Projects</span>
+											<ul
+											        <li><a href="https://amlyfe.github.io/stockpriceforecasting.html">Stock Price Forecasting</a></li>
+												<li><a href="https://amlyfe.github.io/creditcardchurn.html">Credit Card Churn</a></li>
+												<li><a href="https://amlyfe.github.io/healthinsurancecost.html">Health Insurance Cost</a></li>
+												<li><a href="https://amlyfe.github.io/employeeattrition.html">Employee Attrition</a></li>
+												<li><a href="https://amlyfe.github.io/breastcanceranalysis.html">Breast Cancer Analysis</a></li>
+											</ul>	
+										<li><a href="https://amlyfe.github.io/contact.html">Contact</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Presentations</h2>
+									</header>
+									<div class="mini-posts">
+                                        					<article>
+											<a href="https://www.youtube.com/watch?v=RmB7GJIiytY&t=14s" class="image"><img src="images/stockpriceforecasting.png" alt="" /></a>
+											<p>Stock Price Forecasting</p>
+										</article>
+										<article>
+											<a href="https://youtu.be/cV5D9zP-ze0" class="image"><img src="images/image.png" alt="" /></a>
+											<p>Credit Card Churn</p>
+										</article>
+										<article>
+											<a href="https://youtu.be/F4EP5Q5jQlY" class="image"><img src="images/health insurance present.png" alt="" /></a>
+											<p>Health Insurance Cost</p>
+										</article>
+									</div>
+									
+								</section> 
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>I would love to hear from you.</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="mailto:amyl.femal@gmail.com">Email</a></li>
+										<!--<li class="icon solid fa-phone">(562) 644-4838</li> -->
+									        <!-- <li class="icon solid fa-home">1234 Somewhere Road #8254<br />
+										Nashville, TN 00000-0000</li> -->
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; amlyfe. All rights reserved. Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
