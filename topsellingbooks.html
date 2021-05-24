@@ -54,9 +54,9 @@
 									<h2>Data</h2>
 									<p>I obtained data from the following sources:</p>
 									<ul>
-										<li><a href='https://www.kaggle.com/jealousleopard/goodreadsbooks'>Goodreads-books (Kaggle)</a>
-										<br> This CSV file is a comprehensive list of all books listed in Goodreads. It contains 11,127 books with the following 12 variables for each book:
-										<dl>
+										<li><a href='https://www.kaggle.com/jealousleopard/goodreadsbooks'>Goodreads-books (Kaggle)</a> - This CSV file is a comprehensive list of all books listed in Goodreads. It contains 11,127 books with the following 12 variables for each book:
+										<br>
+											<dl>
                                             <dt>bookID</dt>
                                               <dd>
                                                 <p>unique identification number</p>
@@ -107,9 +107,9 @@
                                               </dd>
                                     </dl></li>
 
-										<li><a href='https://en.wikipedia.org/wiki/List_of_best-selling_books'>List of best-selling books (Wikipedia)</a>
-										<br> The list of best-selling books consists of the following variables:
-										<dl>
+										<li><a href='https://en.wikipedia.org/wiki/List_of_best-selling_books'>List of best-selling books (Wikipedia)</a> - The list of best-selling books consists of the following variables:
+										<br>
+											<dl>
                                             <dt>book</dt>
                                               <dd>
                                                 <p>book title</p>
@@ -135,8 +135,7 @@
                                                 <p>the genre of the book</p>
                                               </dd>
 										</dl></li>
-										<li><a href='https://openlibrary.org/dev/docs/api/books'>Open Library API</a>
-										<br> The Open Library API contains over 20 million book editions with information about books. I used the usbn13 number from the Goodreads CSV to obtain additional information abou tthe books. Some of the data extracted included title, genres, languages, publish_country, etc. 
+										<li><a href='https://openlibrary.org/dev/docs/api/books'>Open Library API</a> - The Open Library API contains over 20 million book editions with information about books. I used the usbn13 number from the Goodreads CSV to obtain additional information abou tthe books. Some of the data extracted included title, genres, languages, publish_country, etc. 
 										</li>
 									</ul>
 
@@ -145,7 +144,7 @@
 									<h2>Data Preparation</h2>
 
                                 	<p>I performed data transformations and cleaning techniques on each of these datasets, as seen in the following:</p>
-									<br><a href='https://github.com/afemal/Book_Data/blob/main/Data%20Preparation/kagglesource.ipynb'>Goodreads CSV</a>
+									<a href='https://github.com/afemal/Book_Data/blob/main/Data%20Preparation/kagglesource.ipynb'>Goodreads CSV</a>
 									<br><a href='https://github.com/afemal/Book_Data/blob/main/Data%20Preparation/wikipediasource.ipynb'>List of best-selling books</a>
 									<br><a href='https://github.com/afemal/Book_Data/blob/main/Data%20Preparation/APIsource.ipynb'>Open Library API</a>										
 								
@@ -154,7 +153,7 @@
 									<h2>SQL Database and Visualizations</h2>
 								
 									<p>Once each dataset was prepared, I merged and stored them in a SQLite database and created visualization of my findings, as seen in the following:</p>
-									<br><a href='https://github.com/afemal/Book_Data/blob/main/Database%20Merging%20and%20Visualizations.ipynb'>Code for SQL and Visuals</a>
+									<a href='https://github.com/afemal/Book_Data/blob/main/Database%20Merging%20and%20Visualizations.ipynb'>Code for SQL and Visuals</a>
 
 								<hr class="major" />
 
