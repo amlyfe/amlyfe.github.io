@@ -1768,10 +1768,10 @@ button,
     .posts article > :last-child {
       margin-bottom: 0; }
     .posts article .image {
-      display: inline-block;
+      display: block;
       margin: 0 0 0 0; }
       .posts article .image img {
-        display: inline-block;
+        display: block;
         width: 100%; }
   @media screen and (min-width: 1681px) {
     .posts article:nth-child(3n + 1):before {
