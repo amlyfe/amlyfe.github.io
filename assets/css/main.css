@@ -1768,7 +1768,7 @@ button,
     .posts article > :last-child {
       margin-bottom: 0; }
     .posts article .image {
-      display: block;
+      display: inline-block;
       margin: 0 0 2em 0; }
       .posts article .image img {
         display: block;
