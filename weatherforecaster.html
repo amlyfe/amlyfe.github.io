@@ -53,107 +53,107 @@
 
 									<h2>Code</h2>
 									<!-- Preformatted Code -->
-												<pre><code># Import libraries;
-import requests;
-import json;
-import datetime;
-from prettytable import PrettyTable;
-import string;
+												<pre><code># Import libraries
+import requests
+import json
+import datetime
+from prettytable import PrettyTable
+import string
 
-# This function converts sunrise time from Unix seconds to the local timezone.;
-def sunrise():;
-    # This calculates Unix seconds to the correct timezone.;
-    r = rise + time  # rise is the sunrise time in Unix seconds, time is the shift in seconds from UTC.;
-    t = datetime.datetime.utcfromtimestamp(r)  # This converts Unix to readable timestamp.;
-    risetime = t.strftime('%I:%M %p');
-    return risetime;
+# This function converts sunrise time from Unix seconds to the local timezone.
+def sunrise():
+    # This calculates Unix seconds to the correct timezone.
+    r = rise + time  # rise is the sunrise time in Unix seconds, time is the shift in seconds from UTC.
+    t = datetime.datetime.utcfromtimestamp(r)  # This converts Unix to readable timestamp.
+    risetime = t.strftime('%I:%M %p')
+    return risetime
 
-# This function converts sunset time from Unix seconds to the local timezone.;
-def sunset():;
-    s = set + time;
-    n = datetime.datetime.utcfromtimestamp(s);
-    settime = n.strftime('%I:%M %p');
-    return settime;
+# This function converts sunset time from Unix seconds to the local timezone.
+def sunset():
+    s = set + time
+    n = datetime.datetime.utcfromtimestamp(s)
+    settime = n.strftime('%I:%M %p')
+    return settime
 
-# This will nicely print the information in a table.;
-def pretty():;
-    table = PrettyTable();
-    table.field_names = ['   Temp   ', 'Feels Like',;
-                         ' Low Temp ', 'High  Temp', ' Humidity ', 'Wind Speed',;
-                         ' Sunrise ', '  Sunset  '];
-    table.add_row(['{}°F'.format(temp),'{}°F'.format(feels),;
-                   '{}°F'.format(low),'{}°F'.format(high),'{}%'.format(hum),;
-                   '{} mph'.format(ws),'{}'.format(sunrise()),'{}'.format(sunset())]);
-    print(table);
+# This will nicely print the information in a table.
+def pretty():
+    table = PrettyTable()
+    table.field_names = ['   Temp   ', 'Feels Like',
+                         ' Low Temp ', 'High  Temp', ' Humidity ', 'Wind Speed',
+                         ' Sunrise ', '  Sunset  ']
+    table.add_row(['{}°F'.format(temp),'{}°F'.format(feels),
+                   '{}°F'.format(low),'{}°F'.format(high),'{}%'.format(hum),
+                   '{} mph'.format(ws),'{}'.format(sunrise()),'{}'.format(sunset())])
+    print(table)
 
-# This will allow the user to retrieve weather information for additional cities.;
-def another():;
-    while True:;
-        more = input('\nWould you like weather information for another location? (Y/N): ');
-        if more == 'y' or 'n':;
-            more = more.upper();
-        if more == 'N':;
-            print('\nThank you for using Amy\'s Weather Forecaster. Goodbye!');
-            break;
-        if more == 'Y':;
-            break;
-        elif more != 'Y':;
-            print('\nInvalid entry.');
+# This will allow the user to retrieve weather information for additional cities.
+def another():
+    while True:
+        more = input('\nWould you like weather information for another location? (Y/N): ')
+        if more == 'y' or 'n':
+            more = more.upper()
+        if more == 'N':
+            print('\nThank you for using Amy\'s Weather Forecaster. Goodbye!')
+            break
+        if more == 'Y':
+            break
+        elif more != 'Y':
+            print('\nInvalid entry.')
             
-# This is to determine if the input is a city or zip code.;
-def zip_code():;
-    api_key = ## ENTER API KEY HERE;
-    global url;
-    # If the input contains numbers, it is a zip code.;
-    if location.isdigit():;
-        url = 'http://api.openweathermap.org/data/2.5/weather?zip={},{}&appid={}' \;
-              '&units=imperial'.format(location,'us',api_key);
-        print('\nRetrieving', url);
-    # If the input does not contain numbers, it is a city.;
-    else:;
-        state = input('What state is {} in? '.format(location));
-        url = 'http://api.openweathermap.org/data/2.5/weather?q={},{},{}&appid={}' \;
-              '&units=imperial'.format(location, state, 'us', api_key);
-        print('\nRetrieving', url);
+# This is to determine if the input is a city or zip code.
+def zip_code():
+    api_key = ## ENTER API KEY HERE
+    global url
+    # If the input contains numbers, it is a zip code.
+    if location.isdigit():
+        url = 'http://api.openweathermap.org/data/2.5/weather?zip={},{}&appid={}' \
+              '&units=imperial'.format(location,'us',api_key)
+        print('\nRetrieving', url)
+    # If the input does not contain numbers, it is a city.
+    else:
+        state = input('What state is {} in? '.format(location))
+        url = 'http://api.openweathermap.org/data/2.5/weather?q={},{},{}&appid={}' \
+              '&units=imperial'.format(location, state, 'us', api_key)
+        print('\nRetrieving', url)
 
-def main():;
-    pretty();
-    another();
+def main():
+    pretty()
+    another()
 
-print("Thank you for using Amy's Weather Forecaster to get your weather information!");
-while True:;
-    location = input('Please enter a city or zip code: ');
-    # This is used to present the city correctly when asking the user for the state.;
-    location = string.capwords(location);
-    zip_code();
-    response = requests.request('GET', url);
-    data = json.loads(response.text);
+print("Thank you for using Amy's Weather Forecaster to get your weather information!")
+while True:
+    location = input('Please enter a city or zip code: ')
+    # This is used to present the city correctly when asking the user for the state.
+    location = string.capwords(location)
+    zip_code()
+    response = requests.request('GET', url)
+    data = json.loads(response.text)
 
-    try:;
-        info = data['main'];
-        temp = int(info['temp']);
-        feels = int(info['feels_like']);
-        high = int(info['temp_max']);
-        low = int(info['temp_min']);
-        hum = info['humidity'];
-        ws = int(data['wind']['speed']);
-        sys = data['sys'];
-        rise = sys['sunrise'];
-        set = sys['sunset'];
-        place = data['name'];
-        time = data['timezone'];
-        weather = data['weather'];
-        des = weather[0]['main'];
-        print('\nYour request was successful. \n\nBelow is the current weather ';
-              'information for: {}'.format(place));
-    except:;
-        info = None;
-    # If there is no data in the info variable, there was an error in the input.;
-    if info == None:;
-        print('\n---Failure to Retrieve---\n');
-        continue;
+    try:
+        info = data['main']
+        temp = int(info['temp'])
+        feels = int(info['feels_like'])
+        high = int(info['temp_max'])
+        low = int(info['temp_min'])
+        hum = info['humidity']
+        ws = int(data['wind']['speed'])
+        sys = data['sys']
+        rise = sys['sunrise']
+        set = sys['sunset']
+        place = data['name']
+        time = data['timezone']
+        weather = data['weather']
+        des = weather[0]['main']
+        print('\nYour request was successful. \n\nBelow is the current weather '
+              'information for: {}'.format(place))
+    except:
+        info = None
+    # If there is no data in the info variable, there was an error in the input.
+    if info == None:
+        print('\n---Failure to Retrieve---\n')
+        continue
 
-    main();
+    main()
 </code></pre>
 
 								<h2>Program Output</h2>
