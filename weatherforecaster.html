@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Weather Forecaster</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Data Science</strong> by Amy Femal</a>
+									<ul class="icons">
+										<li><a href="https://twitter.com/itsamylyfe" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<!--<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li> -->
+										<li><a href="https://github.com/afemal" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="https://www.linkedin.com/in/amy-femal-66316419a/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<ul class="actions">
+											<li><a href="https://github.com/afemal/Weather_Forecaster/blob/main/Weather%20Forecaster.ipynb" class="button big">VIEW MY CODE</a></li>
+										</ul>
+										<h1>Weather Forecaster</h1>
+									</header>
+									
+								
+									<!-- <hr class="major" /> -->
+
+									<h2>Project Goal</h2>
+									<p>The goal of this project was to create a program that provides weather forecast information upon city or zip code input.</p>
+
+									<hr class="major" />
+
+									<h2>Code</h2>
+									<!-- Preformatted Code -->
+												<pre><code># Import libraries;
+import requests;
+import json;
+import datetime;
+from prettytable import PrettyTable;
+import string;
+
+# This function converts sunrise time from Unix seconds to the local timezone.;
+def sunrise():;
+    # This calculates Unix seconds to the correct timezone.;
+    r = rise + time  # rise is the sunrise time in Unix seconds, time is the shift in seconds from UTC.;
+    t = datetime.datetime.utcfromtimestamp(r)  # This converts Unix to readable timestamp.;
+    risetime = t.strftime('%I:%M %p');
+    return risetime;
+
+# This function converts sunset time from Unix seconds to the local timezone.;
+def sunset():;
+    s = set + time;
+    n = datetime.datetime.utcfromtimestamp(s);
+    settime = n.strftime('%I:%M %p');
+    return settime;
+
+# This will nicely print the information in a table.;
+def pretty():;
+    table = PrettyTable();
+    table.field_names = ['   Temp   ', 'Feels Like',;
+                         ' Low Temp ', 'High  Temp', ' Humidity ', 'Wind Speed',;
+                         ' Sunrise ', '  Sunset  '];
+    table.add_row(['{}°F'.format(temp),'{}°F'.format(feels),;
+                   '{}°F'.format(low),'{}°F'.format(high),'{}%'.format(hum),;
+                   '{} mph'.format(ws),'{}'.format(sunrise()),'{}'.format(sunset())]);
+    print(table);
+
+# This will allow the user to retrieve weather information for additional cities.;
+def another():;
+    while True:;
+        more = input('\nWould you like weather information for another location? (Y/N): ');
+        if more == 'y' or 'n':;
+            more = more.upper();
+        if more == 'N':;
+            print('\nThank you for using Amy\'s Weather Forecaster. Goodbye!');
+            break;
+        if more == 'Y':;
+            break;
+        elif more != 'Y':;
+            print('\nInvalid entry.');
+            
+# This is to determine if the input is a city or zip code.;
+def zip_code():;
+    api_key = ## ENTER API KEY HERE;
+    global url;
+    # If the input contains numbers, it is a zip code.;
+    if location.isdigit():;
+        url = 'http://api.openweathermap.org/data/2.5/weather?zip={},{}&appid={}' \;
+              '&units=imperial'.format(location,'us',api_key);
+        print('\nRetrieving', url);
+    # If the input does not contain numbers, it is a city.;
+    else:;
+        state = input('What state is {} in? '.format(location));
+        url = 'http://api.openweathermap.org/data/2.5/weather?q={},{},{}&appid={}' \;
+              '&units=imperial'.format(location, state, 'us', api_key);
+        print('\nRetrieving', url);
+
+def main():;
+    pretty();
+    another();
+
+print("Thank you for using Amy's Weather Forecaster to get your weather information!");
+while True:;
+    location = input('Please enter a city or zip code: ');
+    # This is used to present the city correctly when asking the user for the state.;
+    location = string.capwords(location);
+    zip_code();
+    response = requests.request('GET', url);
+    data = json.loads(response.text);
+
+    try:;
+        info = data['main'];
+        temp = int(info['temp']);
+        feels = int(info['feels_like']);
+        high = int(info['temp_max']);
+        low = int(info['temp_min']);
+        hum = info['humidity'];
+        ws = int(data['wind']['speed']);
+        sys = data['sys'];
+        rise = sys['sunrise'];
+        set = sys['sunset'];
+        place = data['name'];
+        time = data['timezone'];
+        weather = data['weather'];
+        des = weather[0]['main'];
+        print('\nYour request was successful. \n\nBelow is the current weather ';
+              'information for: {}'.format(place));
+    except:;
+        info = None;
+    # If there is no data in the info variable, there was an error in the input.;
+    if info == None:;
+        print('\n---Failure to Retrieve---\n');
+        continue;
+
+    main();
+</code></pre>
+
+								<h2>Conclusion</h2>
+								<p>Based on my analysis, I would recommend running bobblehead marketing promotions on Monday games in September and October to increase attendance.</p>
+								<hr class="major" />
+									 
+							</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<!--<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section> -->
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li><a href="https://amlyfe.github.io/aboutamy.html">About</a></li>
+                                                                                <li>
+											<span class="opener">Projects</span>
+											<ul
+											        <li><a href="https://amlyfe.github.io/stockpriceforecasting.html">Stock Price Forecasting</a></li>
+												<li><a href="https://amlyfe.github.io/airlinesafety.html">Airline Safety</a></li>
+												<li><a href="https://amlyfe.github.io/disneylandreviewanalysis.html">Disneyland Review Analysis</a></li>
+												<li><a href="https://amlyfe.github.io/creditcardchurn.html">Credit Card Churn</a></li>
+												<li><a href="https://amlyfe.github.io/healthinsurancecost.html">Health Insurance Cost</a></li>
+												<li><a href="https://amlyfe.github.io/dodgersmarketingpromotion.html">Dodgers Marketing Promotion</a></li>
+												<li><a href="https://amlyfe.github.io/employeeattrition.html">Employee Attrition</a></li>
+												<li><a href="https://amlyfe.github.io/breastcanceranalysis.html">Breast Cancer Analysis</a></li>
+												<li><a href="https://amlyfe.github.io/topsellingbooks.html">Top Selling Books</a></li>
+											</ul>	
+										<li><a href="https://amlyfe.github.io/contact.html">Contact</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Presentations</h2>
+									</header>
+									<div class="mini-posts">
+                                        					<article>
+											<a href="https://youtu.be/wTzL3lEK3Iw" class="image"><img src="images/Airline Safety/airlinesafety.png" alt="" /></a>
+											<p>Airline Safety</p>
+										</article>
+										<article>
+											<a href="https://youtu.be/oLzfKkh34OI" class="image"><img src="images/Disneyland/disneylandreviewanalysis.png" alt="" /></a>
+											<p>Disneyland Review Analysis</p>
+										</article>
+										<article>
+											<a href="https://www.youtube.com/watch?v=RmB7GJIiytY&t=13s" class="image"><img src="images/stockpriceforecasting.png" alt="" /></a>
+											<p>Credit Card Churn</p>
+										</article>
+										<article>
+											<a href="https://youtu.be/cV5D9zP-ze0" class="image"><img src="images/image.png" alt="" /></a>
+											<p>Credit Card Churn</p>
+										</article>
+										<article>
+											<a href="https://youtu.be/F4EP5Q5jQlY" class="image"><img src="images/health insurance present.png" alt="" /></a>
+											<p>Health Insurance Cost</p>
+										</article>
+									</div>
+									
+								</section> 
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>I would love to hear from you.</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="mailto:amyl.femal@gmail.com">Email</a></li>
+										<!--<li class="icon solid fa-phone">(562) 644-4838</li> -->
+									        <!-- <li class="icon solid fa-home">1234 Somewhere Road #8254<br />
+										Nashville, TN 00000-0000</li> -->
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; amlyfe. All rights reserved. Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
