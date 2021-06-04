@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Disneyland Review Analysis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Data Science</strong> by Amy Femal</a>
+									<ul class="icons">
+										<li><a href="https://twitter.com/itsamylyfe" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<!--<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li> -->
+										<li><a href="https://github.com/afemal" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="https://www.linkedin.com/in/amy-femal-66316419a/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<ul class="actions">
+											<li><a href="https://github.com/afemal/Disneyland_Review_Analysis/blob/main/Disneyland%20Review%20Analysis.ipynb" class="button big">VIEW MY CODE</a></li>
+										</ul>
+										<h1>Disneyland Review Analysis</h1>
+									</header>
+									
+								
+									<!-- <hr class="major" /> -->
+
+									<h2>Introduction</h2>
+									<p>The Walt Disney Company’s world-class customer service can be attributed to their implementation of the Five Keys: safety, courtesy, inclusion, show, and efficiency. Though each key is essential and work together to provide an exceptional experience for our guests, I will be focusing on the courtesy key by analyzing the reviews provided by the park guests. The company takes great interest in the satisfaction of their guests. The Disneyland Resort Guest Experience team focuses on ensuring guest expectations are not only met but exceeded. They use different methods to gather guest feedback. One of these methods includes conducting high-volume field research across the resort, in which specialists conduct surveys as guests exit the park. Guests are asked a variety of questions regarding different aspects of their park experience. However, with such large park attendance numbers, not all guests can be surveyed. Fortunately, social media platforms can be used to gain further insight of the guest experience. </p>
+
+									<hr class="major" />
+
+									<h2>Business Problem</h2>
+									<p>Using reviews provided by Disneyland park guests on Trip Advisor, I set out to answer the following questions:</p>
+									<ul>
+										<li>What was the overall rating of each park?</li>
+										<li>Which topics are trending among satisfied guests?</li>
+										<li>Which topics are trending among unsatisfied guests?</li>
+										<li>What are potential solutions to improve the guest experience?</li>
+									</ul>
+									<p>It is important to understand the strengths and weakness of each park. Trending topics for satisfied guests indicate what Disney is doing well and should continue doing. Those that are trending for dissatisfied guests indicate the areas that have room for improvement.</p>
+
+									<hr class="major" />
+
+									<h2>Methods</h2>
+									<p>I obtained the <a href="https://www.kaggle.com/arushchillar/disneyland-reviews">Disneyland Reviews</a> data from Kaggle. The data consists of over 40,000 reviews with the following variables:</p>
+									<ul>
+										<li>Review_ID: unique identifier for each review</li>
+										<li>Rating: the rating score given by the reviewer</li>
+										<li>Year_Month: the year and month of the visit</li>
+										<li>Reviewer_Location: the country of origin of the reviewer</li>
+										<li>Review_Text: the written feedback provided by the reviewer</li>
+										<li>Branch: the Disneyland park being reviewed </li>
+									</ul>
+									<p>First, I performed exploratory analysis. The rating score given by the reviewer ranged from 1 to 5, with 1 indicating the guest was completely unsatisfied with their visit and 5 indicating the guest was completely satisfied with their visit. The average rating of all reviews was 4.2. Each review was about one of three Disneyland parks: Disneyland (in California), Hong Kong Disneyland, and Disneyland Paris. The majority of the reviews were written about Disneyland, making up 45.5% of the total reviews. Disneyland Paris and Hong Kong Disneyland made up the other 32% and 22.5% of the reviews, respectively. Disneyland received the highest rating with an average of 4.4, followed by Hong Kong Disneyland with an average rating of 4.2 and Disneyland Paris with an average rating of 4.0.
+										<br>
+										Next, I prepared the data for topic modeling use. I created a new variable to capture the sentiment of each review by classifying ratings of 4 and 5 as positive and ratings of 3 and lower as negative. Then, I preprocessed the review text by converting it to lowercase, removing any punctuation, removed any commonly used words, and lemmatized each word to obtain its root form.
+										<br>
+										Once the data was prepared, I split it by park to further analyze topics in positive and negative reviews of each and removed some of the most common words shared by both. Then, I observed the most common words appearing for each sentiment and performed topic modeling using two methods: Latent Semantic Analysis (LSA) and Latent Dirichlet Allocation (LDA).</p>
+									
+									<h2>Results</h2>
+									<h4>Positive Reviews - Disneyland</h4>
+									<p>The most common words appearing in positive reviews for Disneyland can be seen in <i>Figure 1</i>. Many park attractions were referenced, such as Indiana Jones, Space Mountain, Haunted Mansion, Small World, Splash Mountain, etc. Other terms I found to be significant include fast pass, parade, character, fireworks, show, staff, and cast member. </p>
+									
+								    <figure>
+										<figcaption><i>Figure 1 - Most common words in positive reviews for Disneyland</i></figcaption>
+										<img src="images/Disneyland/positive ca.png" style="width:75%; height=auto">
+									</figure>
+									
+									<p>I found the top five topics using Latent Semantic Analysis and Latent Dirichlet Allocation. The frequency of each topic can be seen in <i>Figure 2</i>. Disneyland guests seem most satisfied with the attractions in the park and the Disney FASTPASS® service. They also seem to have great interactions with Disney Cast Members.</p>
+									<figure>
+										<figcaption><i>Figure 2 - Topic counts using Latent Semantic Analysis and Latent Dirichlet Allocation</i></figcaption>
+										<img src="images/Disneyland/pos ca topics.png" style="width:75%; height=auto">
+									</figure>
+
+									<h4>Negative Reviews - Disneyland</h4>
+									<p>The most common words appearing in negative reviews can be seen in <i>Figure 3</i>. Some of the most common words are wait, long, and crowd. Some other words that I found to be interesting include: closed, expensive, staff, and rude. Many of the reviews containing rude were directed toward Cast Members.  </p>
+									<figure>
+										<figcaption><i>Figure 3 - Most common words in negative reviews for Disneyland</i></figcaption>
+										<img src="images/Disneyland/negative ca.png" style="width:75%; height=auto">
+									</figure>
+									<p>The frequnecy of the top five topics can be seen in <i>Figure 4</i>. Disneyland guests are unsatisfied when attractions are closed or when they have long wait times. Though attraction closures and long wait times may be unavoidable, honesty and transparency can help alleviate frustrations among guests. Some solutions may include posting accurate wait times where applicable and communicating any operational changes in a timely manner. Disneyland guests are also unsatisfied with some of the available food offerings. This feedback can be addressed with changes or adjustments to menu items.</p>
+									<figure>
+										<figcaption><i>Figure 4 - Topic counts using Latent Semantic Analysis and Latent Dirichlet Allocation</i></figcaption>
+										<img src="images/Disneyland/neg ca topics.png" style="width:75%; height=auto">
+									</figure>
+                                    
+									<h4>Positive Reviews - Hong Kong Disneyland</h4>
+									<p>The most common words appearing in positive reviews for Hong Kong Disneyland can be seen in <i>Figure 5</i>. Like with Disneyland, many reviews contain park attractions and entertainment offerings.</p>
+									
+								    <figure>
+										<figcaption><i>Figure 5 - Most common words in positive reviews for Hong Kong Disneyland</i></figcaption>
+										<img src="images/Disneyland/positive hk.png" style="width:75%; height=auto">
+									</figure>
+									
+									<p>I found the top five topics using Latent Semantic Analysis and Latent Dirichlet Allocation. The frequency of each topic can be seen in <i>Figure 6</i>. Hong Kong Disneyland guests are most satisfied with the entertainment offerings, such as fireworks, parades, and character meet-and-greets.</p>
+									<figure>
+										<figcaption><i>Figure 6 - Topic counts using Latent Semantic Analysis and Latent Dirichlet Allocation</i></figcaption>
+										<img src="images/Disneyland/pos hk topics.png" style="width:75%; height=auto">
+									</figure>
+
+									<h4>Negative Reviews - Hong Kong Disneyland</h4>
+									<p>The most common words appearing in negative reviews can be seen in <i>Figure 7</i>. Many of the words are similar to those found in negative Disneyland reviews, such as staff, expensive, crowded, and closed. It is interesting to see many of the entertainment offers seen in the positive reviews also appearing in the negative reviews.</p>
+									<figure>
+										<figcaption><i>Figure 7 - Most common words in negative reviews for Hong Kong Disneyland</i></figcaption>
+										<img src="images/Disneyland/negative hk.png" style="width:75%; height=auto">
+									</figure>
+									<p>The frequnecy of the top five topics can be seen in <i>Figure 8</i>. Dissatisfaction among Hong Kong Disneyland guests mainly stems from negative interactions with Cast Members. To stress the importance of courtesy, it may be necessary to provide additional tools to Cast Members, such as refresh training. Many of the reviews also described the park as being much smaller compared to other Disney parks and having fewer attractions. A park expansion is not currently possible due to the recent decision made by the Hong Kong Government to not allow Disney to purchase additional land (Mitchell, 2021); however, refurbishment and updates to the existing land may be considered.</p>
+									<figure>
+										<figcaption><i>Figure 8 - Topic counts using Latent Semantic Analysis and Latent Dirichlet Allocation</i></figcaption>
+										<img src="images/Disneyland/neg hk topics.png" style="width:75%; height=auto">
+									</figure>
+
+									<h4>Positive Reviews - Disneyland Paris</h4>
+									<p>The most common words appearing in positive reviews for Disneyland Paris can be seen in <i>Figure 9</i>. Similar to Disneyland and Hong Kong Disneyland, satisfied Disneyland Paris guests enjoy attractions and entertainment.</p>
+									
+								    <figure>
+										<figcaption><i>Figure 9 - Most common words in positive reviews for Disneyland Paris</i></figcaption>
+										<img src="images/Disneyland/positive paris.png" style="width:75%; height=auto">
+									</figure>
+									
+									<p>I found the top five topics using Latent Semantic Analysis and Latent Dirichlet Allocation. The frequency of each topic can be seen in <i>Figure 10</i>. Disneyland Paris guest are most satisfied with attractions and entertainment offerings.</p>
+									<figure>
+										<figcaption><i>Figure 10 - Topic counts using Latent Semantic Analysis and Latent Dirichlet Allocation</i></figcaption>
+										<img src="images/Disneyland/pos paris topics.png" style="width:75%; height=auto">
+									</figure>
+
+									<h4>Negative Reviews - Disneyland Paris</h4>
+									<p>The most common words appearing in negative reviews can be seen in <i>Figure 11</i>. One of the most common words included in reviews is staff. Most of the others have been seen in the negative reviews for the other two parks.</p>
+									<figure>
+										<figcaption><i>Figure 11 - Most common words in negative reviews for Disneyland Paris</i></figcaption>
+										<img src="images/Disneyland/negative paris.png" style="width:75%; height=auto">
+									</figure>
+									<p>The frequnecy of the top five topics can be seen in <i>Figure 12</i>. Similar to Disneyland guests, it appears Disneyland Paris guest are unsatisfied with closures and long waits. They are also dissatisfied with negative interactions with Cast Members, like Hong Kong Disneyland guests. These problems can be dealt with in a similar way that I have previously described.</p>
+									<figure>
+										<figcaption><i>Figure 12 - Topic counts using Latent Semantic Analysis and Latent Dirichlet Allocation</i></figcaption>
+										<img src="images/Disneyland/neg paris topics.png" style="width:75%; height=auto">
+									</figure>
+
+
+									<!-- <hr class="major" /> -->
+
+									<h2>Conclusion</h2>
+									<p>Customer satisfaction plays an important role for all businesses. It is a key indicator used to measure customer loyalty, reduce churn, and increase revenue; however, for the Walt Disney Company, customer satisfaction runs deeper. It likes within the company’s core values derived from Walt’s dream to create “a place for people to find happiness.” The Walt Disney Company uses a variety of techniques to ensure their park guests are satisfied. Analyzing reviews on social media platforms is just one of many ways of gaining further insight. Understanding the topics that are trending among dissatisfied guests can help the Walt Disney Company be proactive and make appropriate change to improve guest satisfaction, so that it remains <i>The Happiest Place on Earth.</i></p>
+									
+									<hr class="major" />
+									
+										
+									<h4>References</h4>
+									<ul>
+  										<sub><li>24/7 Software. (2021, February 25). The 4 Things Disney Can Teach You About Customer Service. Retrieved May 13, 2021, from  <a>https://www.247software.com/blog/disney-teach-about-customer-service</a></li>
+										<li>Bansal, S. (2020, December 23). Beginners guide to topic modeling in python and feature selection. Retrieved May 13, 2021, from  <a>https://www.analyticsvidhya.com/blog/2016/08/beginners-guide-to-topic-modeling-in-python/</a></li>
+										<li>Chillar, A. (2021, January 19). Disneyland Reviews. Retrieved May 13, 2021, from  <a>https://www.kaggle.com/arushchillar/disneyland-reviews</a></li>
+										<li>Copley, L. (2017, May 18). 6 reasons why customer satisfaction is important. Retrieved May 13, 2021, from <a>https://www.allaboutcalls.co.uk/the-call-takers-blog/6-reasons-why-customer-satisfaction-is-important</a></li>
+										<li>Disney - Leadership, History, Corporate Social Responsibility. The Walt Disney Company. (2020, March 2). Retrieved May 13, 2021, from <a>https://thewaltdisneycompany.com/about/</a></li>
+										<li>Foster, M. (2020, July 31). How Disney Beats All Others in Customer Service. Retrieved May 13, 2021, from <a>https://www.wdwinfo.com/disneylandcalifornia/how-disney-beats-all-others-in-customer-service/</a></li>
+										<li>Guest research SPECIALIST- Part Time: ANAHEIM, Ca: Disney Parks & Resorts. (n.d.). Retrieved May 13, 2021, from  <a>https://jobsearcher.com/j/guest-research-specialist-part-time-at-disney-parks-resorts-in-anaheim-ca-z9023x</a></li>
+										<li>Landauer, T. K., & Dumais, S. (n.d.). Latent semantic analysis. Scholarpedia. Retrieved May 13, 2021, from <a>http://www.scholarpedia.org/article/Latent_semantic_analysis</a></li>
+										<li>Malik, U. (n.d.). Python for NLP: Topic Modeling. Retrieved May 14, 2021, from  <a>https://stackabuse.com/python-for-nlp-topic-modeling/</a></li>
+										<li>Mitchell, B. (2021, February 22). Disney loses right to expand Hong Kong Disneyland. Blooloop. Retrieved May 25, 2021, from <a>https://blooloop.com/theme-park/news/hong-kong-disneyland-loses-right-expand/</a></li>
+										<li>Nair, G. (2016, July). Text mining 101: Topic modeling. Retrieved May 13, 2021, from  <a>https://www.kdnuggets.com/2016/07/text-mining-101-topic-modeling.html</a></li>
+										<li>Pascual, F. (2019, September 26). Introduction to topic modeling. Retrieved May 13, 2021, from  <a>https://monkeylearn.com/blog/introduction-to-topic-modeling/</a></li>
+										<li>TWDC Standards of Business Conduct. (2017, May). Retrieved May 13, 2021, from  <a>https://thewaltdisneycompany.com/app/uploads/2019/06/TWDC-Standards-of-Business-Conduct-1.pdf</a></li>
+										<li>Walt Disney Parks and Resorts. (n.d.). Retrieved May 13, 2021, from <a>https://www.indeed.com/cmp/Walt-Disney-Parks-and-Resorts/reviews?fjobtitle=Research%2BSpecialist</a></li></sub>
+									</ul>  
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+							<!-- Search -->
+								<!--<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section> -->
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li><a href="https://amlyfe.github.io/aboutamy.html">About</a></li>
+                                                                                <li>
+											<span class="opener">Projects</span>
+											<ul>
+												<li><a href="https://amlyfe.github.io/stockpriceforecasting.html">Stock Price Forecasting</a></li>
+												<li><a href="https://amlyfe.github.io/airlinesafety.html">Airline Safety</a></li>
+												<li><a href="https://amlyfe.github.io/disneylandreviewanalysis.html">Disneyland Review Analysis</a></li>
+												<li><a href="https://amlyfe.github.io/creditcardchurn.html">Credit Card Churn</a></li>
+												<li><a href="https://amlyfe.github.io/healthinsurancecost.html">Health Insurance Cost</a></li>
+												<li><a href="https://amlyfe.github.io/dodgersmarketingpromotion.html">Dodgers Marketing Promotion</a></li>
+												<li><a href="https://amlyfe.github.io/employeeattrition.html">Employee Attrition</a></li>
+												<li><a href="https://amlyfe.github.io/breastcanceranalysis.html">Breast Cancer Analysis</a></li>
+												<li><a href="https://amlyfe.github.io/topsellingbooks.html">Top Selling Books</a></li>
+											</ul>	
+										<li><a href="https://amlyfe.github.io/contact.html">Contact</a></li>
+									</ul>
+								</nav>
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Presentations</h2>
+									</header>
+									<div class="mini-posts">
+										<article>
+											<a href="https://www.youtube.com/watch?v=RmB7GJIiytY&t=13s" class="image"><img src="images/stockpriceforecasting.png" alt="" /></a>
+											<p>Stock Price Forecasting</p>
+										</article>
+										<article>
+											<a href="https://youtu.be/oLzfKkh34OI" class="image"><img src="images/Disneyland/disneylandreviewanalysis.png" alt="" /></a>
+											<p>Disneyland Review Analysis</p>
+										</article>
+										<article>
+											<a href="https://youtu.be/cV5D9zP-ze0" class="image"><img src="images/image.png" alt="" /></a>
+											<p>Credit Card Churn</p>
+										</article>
+										<article>
+											<a href="https://youtu.be/F4EP5Q5jQlY" class="image"><img src="images/health insurance present.png" alt="" /></a>
+											<p>Health Insurance Cost</p>
+										</article>
+									</div>
+									
+								</section> 
+
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>I would love to hear from you.</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="mailto:amyl.femal@gmail.com">Email</a></li>
+										<!--<li class="icon solid fa-phone">(562) 644-4838</li> -->
+									        <!-- <li class="icon solid fa-home">1234 Somewhere Road #8254<br />
+										Nashville, TN 00000-0000</li> -->
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; amlyfe. All rights reserved. Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
